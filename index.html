@@ -1,0 +1,3506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shain Sahagun</title>
+
+    <!-- ✅ Google Fonts: Nunito -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Tailwind config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Nunito", "sans-serif"],
+            },
+            colors: {
+              gray: {
+                800: "#1f2937",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- ✅ Smooth scroll behavior -->
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#FAF9F6] text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="bg-[#FAF9F6]/50 sticky top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between"
+      >
+        <h1
+          id="header-name"
+          onclick="window.location.href = window.location.origin + window.location.pathname"
+          class="cursor-pointer text-2xl font-bold text-gray-800 transition-opacity duration-300 hover:opacity-80"
+        >
+          Shain Sahagun
+        </h1>
+
+        <nav>
+          <ul
+            class="hidden md:flex space-x-6 font-medium items-center relative"
+          >
+            <li>
+              <a
+                href="#about"
+                class="transition-all duration-200 hover:text-black hover:tracking-wide hover:font-semibold"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#education"
+                class="transition-all duration-200 hover:text-black hover:tracking-wide hover:font-semibold"
+              >
+                Education / Experience
+              </a>
+            </li>
+            <li>
+              <a
+                href="#stack"
+                class="transition-all duration-200 hover:text-black hover:tracking-wide hover:font-semibold"
+                >My Personal Stack</a
+              >
+            </li>
+            <li>
+              <a
+                href="#projects"
+                class="transition-all duration-200 hover:text-black hover:tracking-wide hover:font-semibold"
+                >Projects</a
+              >
+            </li>
+            <li class="relative">
+              <button
+                id="more-btn"
+                class="focus:outline-none flex items-center gap-1 transition-all duration-200 hover:text-black hover:tracking-wide hover:font-semibold"
+              >
+                More
+                <svg
+                  id="arrow-icon"
+                  class="w-4 h-4 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <ul
+                id="dropdown-menu"
+                class="absolute hidden top-full right-0 mt-2 w-80 bg-white border rounded shadow-md z-50 p-2"
+              >
+                <li>
+                  <a
+                    href="#licenses"
+                    class="block px-4 py-2 hover:bg-gray-100 rounded"
+                    >Licenses / Certifications / Awards</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#competitions"
+                    class="block px-4 py-2 hover:bg-gray-100 rounded"
+                    >Competitions</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#leadership"
+                    class="block px-4 py-2 hover:bg-gray-100 rounded"
+                    >Leadership Background</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#volunteering"
+                    class="block px-4 py-2 hover:bg-gray-100 rounded"
+                    >Volunteering</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="block px-4 py-2 hover:bg-gray-100 rounded"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button id="menu-btn" class="focus:outline-none">
+              <svg
+                class="w-6 h-6 text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden hidden absolute top-16 left-0 w-full bg-[#FAF9F6]/50 z-[60] px-8 pb-4 shadow-lg"
+      >
+        <ul class="space-y-2">
+          <li>
+            <a href="#about" class="block py-1 hover:text-gray-800">About</a>
+          </li>
+          <li>
+            <a href="#education" class="block py-1 hover:text-gray-800"
+              >Education / Experience</a
+            >
+          </li>
+          <li>
+            <a href="#stack" class="block py-1 hover:text-gray-800"
+              >My Personal Stack</a
+            >
+          </li>
+          <li>
+            <a href="#projects" class="block py-1 hover:text-gray-800"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a href="#licenses" class="block py-1 hover:text-gray-800"
+              >Licenses / Certifications / Awards</a
+            >
+          </li>
+          <li>
+            <a href="#competitions" class="block py-1 hover:text-gray-800"
+              >Competitions</a
+            >
+          </li>
+          <li>
+            <a href="#leadership" class="block py-1 hover:text-gray-800"
+              >Leadership Background</a
+            >
+          </li>
+          <li>
+            <a href="#volunteering" class="block py-1 hover:text-gray-800"
+              >Volunteering</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="block py-1 hover:text-gray-800"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="space-y-20 pb-12">
+      <section id="about" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <div class="flex flex-col md:flex-row items-center gap-12 w-full">
+              <div class="md:w-1/2 flex justify-center">
+                <img
+                  src="DSC_0624.jpg"
+                  alt="Shain Sahagun"
+                  class="rounded-lg shadow-md w-full max-w-sm"
+                />
+              </div>
+              <div class="md:w-[85%] space-y-4 text-left">
+                <h1
+                  class="text-4xl md:text-[55px] font-bold text-gray-800 text-center md:text-left"
+                >
+                  Shain Sahagun
+                </h1>
+
+                <!-- About Me Section -->
+                <div class="text-center md:text-left">
+                  <h2
+                    class="text-lg font-bold uppercase tracking-wider text-gray-700"
+                  >
+                    About Me
+                  </h2>
+                  <p class="text-gray-600 text-center md:text-left">
+                    An aspiring multidisciplinary
+                    <span class="font-bold">Software & AI/ML Engineer</span>,
+                    based in the Philippines.
+                  </p>
+                </div>
+
+                <!-- Focus Section -->
+                <div class="text-center md:text-left">
+                  <h2
+                    class="text-lg font-bold uppercase tracking-wider text-gray-700"
+                  >
+                    Focus
+                  </h2>
+                  <ul class="list-disc list-inside text-gray-600 text-left">
+                    <li>
+                      Frontend & Backend Development (Cross-platform Mobile &
+                      Web apps)
+                    </li>
+                    <li>AI/ML (Machine Perception: Computer Vision, NLP)</li>
+                    <li>
+                      Integration of Cloud Technologies into Mobile & Web apps
+                    </li>
+                  </ul>
+                </div>
+
+                <p class="text-gray-600 mt-4 text-center md:text-left">
+                  I build software solutions that utilize
+                  <span class="font-bold">AI</span> &
+                  <span class="font-bold">Cloud</span> technologies.
+                </p>
+
+                <!-- Small gray rectangle divider -->
+                <div
+                  class="w-[200px] h-[4px] bg-gray-800 mx-auto md:mx-0 rounded-full"
+                ></div>
+
+                <!-- Social Icons with Z-Axis Hover "Float" Effect -->
+                <div class="flex justify-center md:justify-start gap-5 mt-2">
+                  <a
+                    href="https://linkedin.com/in/yourprofile"
+                    target="_blank"
+                    class="transition transform duration-300 hover:scale-110"
+                  >
+                    <img
+                      src="contacts-icons/LinkedIn-icon-black.png"
+                      alt="LinkedIn"
+                      class="w-7 h-7"
+                    />
+                  </a>
+                  <a
+                    href="https://github.com/yourprofile"
+                    target="_blank"
+                    class="transition transform duration-300 hover:scale-110"
+                  >
+                    <img
+                      src="contacts-icons/GitHub-icon-black.png"
+                      alt="GitHub"
+                      class="w-7 h-7"
+                    />
+                  </a>
+                  <a
+                    href="https://behance.net/yourprofile"
+                    target="_blank"
+                    class="transition transform duration-300 hover:scale-110"
+                  >
+                    <img
+                      src="contacts-icons/Behance.png"
+                      alt="Behance"
+                      class="w-7 h-7"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other Sections -->
+      <section id="education" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800 text-center">
+              Education / Experience
+            </h2>
+            <div class="flex flex-col md:flex-row gap-12">
+              <!-- Experience Column -->
+              <div class="md:w-1/2 space-y-6">
+                <h3 class="text-xl font-semibold text-gray-700 border-b pb-2">
+                  Experience
+                </h3>
+
+                <!-- Experience 1 -->
+                <div
+                  class="bg-gray-50 p-4 rounded-md shadow-sm flex flex-col space-y-1"
+                >
+                  <div class="flex justify-between">
+                    <p class="font-semibold text-gray-800">UI Developer</p>
+                    <p class="text-sm text-gray-600">Mar 2025 – May 2025</p>
+                  </div>
+                  <div class="flex justify-between">
+                    <p class="text-sm text-gray-700">
+                      Exist Software Labs, Inc.
+                    </p>
+                    <p class="text-sm text-gray-600">Internship</p>
+                  </div>
+                  <p class="text-sm text-gray-600">Ortigas, Pasig City</p>
+                  <div class="flex justify-end">
+                    <button
+                      onclick="openModal('modal-ui-dev')"
+                      class="text-sm text-blue-600 hover:underline font-medium"
+                    >
+                      Learn more
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div
+                  class="bg-gray-50 p-4 rounded-md shadow-sm flex flex-col space-y-1"
+                >
+                  <div class="flex justify-between">
+                    <p class="font-semibold text-gray-800">
+                      IT Director (Trainee)
+                    </p>
+                    <p class="text-sm text-gray-600">July 2024 – July 2024</p>
+                  </div>
+                  <div class="flex justify-between">
+                    <p class="text-sm text-gray-600">SOLHAUS Limited (so/ul)</p>
+                    <p class="text-sm text-gray-600">Part-time</p>
+                  </div>
+                  <p class="text-sm text-gray-600">Remote</p>
+                  <div class="flex justify-end pt-2">
+                    <button
+                      onclick="openModal('modal-it-dir')"
+                      class="text-sm text-blue-600 hover:underline font-medium"
+                    >
+                      Learn more
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div
+                  class="bg-gray-50 p-4 rounded-md shadow-sm flex flex-col space-y-1"
+                >
+                  <div class="flex justify-between">
+                    <p class="font-semibold text-gray-800">
+                      Web Development Intern
+                    </p>
+                    <p class="text-sm text-gray-600">Mar 2024 – April 2023</p>
+                  </div>
+                  <div class="flex justify-between">
+                    <p class="text-sm text-gray-600">ChatGenie.PH</p>
+                    <p class="text-sm text-gray-600">Internship</p>
+                  </div>
+                  <p class="text-sm text-gray-600">Remote</p>
+                  <div class="flex justify-end pt-2">
+                    <button
+                      onclick="openModal('modal-chatgenie')"
+                      class="text-sm text-blue-600 hover:underline font-medium"
+                    >
+                      Learn more
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div
+                  class="bg-gray-50 p-4 rounded-md shadow-sm flex flex-col space-y-1"
+                >
+                  <div class="flex justify-between">
+                    <p class="font-semibold text-gray-800">
+                      Customer Experience Agent
+                    </p>
+                    <p class="text-sm text-gray-600">Mar 2024 – Mar 2024</p>
+                  </div>
+                  <div class="flex justify-between">
+                    <p class="text-sm text-gray-700">Alorica</p>
+                    <p class="text-sm text-gray-600">Part-time</p>
+                  </div>
+                  <p class="text-sm text-gray-600">Sta. Mesa, Quezon City</p>
+                  <div class="flex justify-end">
+                    <button
+                      onclick="openModal('modal-alorica')"
+                      class="text-sm text-blue-600 hover:underline font-medium"
+                    >
+                      Learn more
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Education Column -->
+              <div class="md:w-1/2 space-y-6">
+                <h3 class="text-xl font-semibold text-gray-700 border-b pb-2">
+                  Education
+                </h3>
+
+                <div
+                  class="bg-gray-50 p-4 rounded-md shadow-sm flex flex-col space-y-1"
+                >
+                  <p class="text-sm text-gray-600">2021 – 2025</p>
+                  <p class="font-semibold text-gray-800">
+                    Bachelor of Science - BS, Computer Engineering
+                  </p>
+                  <p class="text-sm text-gray-700">
+                    Specializing in Intelligent Systems
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    Technological Institute of the Philippines - Quezon City
+                  </p>
+                </div>
+
+                <div
+                  class="bg-gray-50 p-4 rounded-md shadow-sm flex flex-col space-y-1"
+                >
+                  <p class="text-sm text-gray-600">2019 – 2021</p>
+                  <p class="font-semibold text-gray-800">
+                    Information and Communication Technology - ICT, Strand
+                  </p>
+                  <p class="text-sm text-gray-700">
+                    Technical-Vocational Livelihood - TVL, Track
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    Colegio De San Jose Del Monte Inc.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="stack" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">
+              My Personal Stack
+            </h2>
+
+            <div class="flex flex-wrap gap-4">
+              <!-- UI/UX -->
+              <div class="w-full md:w-[48%] lg:w-[32%]">
+                <details class="group border rounded-lg p-4">
+                  <summary
+                    class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-600"
+                  >
+                    UI/UX
+                  </summary>
+                  <ul class="mt-2 list-disc list-inside text-sm text-gray-600">
+                    <li>Figma</li>
+                    <li>shadcn/ui, Material Design</li>
+                    <li>Canva</li>
+                    <li>Photopea</li>
+                  </ul>
+                </details>
+              </div>
+
+              <!-- Frontend -->
+              <div class="w-full md:w-[48%] lg:w-[32%]">
+                <details class="group border rounded-lg p-4">
+                  <summary
+                    class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-600"
+                  >
+                    Frontend
+                  </summary>
+                  <div class="mt-2 text-sm text-gray-600 space-y-3">
+                    <!-- Web -->
+                    <div>
+                      <h4 class="font-semibold text-gray-700 mb-1">Web</h4>
+                      <ul class="list-disc list-inside ml-4">
+                        <li>TypeScript</li>
+                        <li>HTML, CSS</li>
+                        <li>React (Next.js)</li>
+                        <li>shadcn/ui</li>
+                        <li>Tailwind CSS</li>
+                        <li>Streamlit</li>
+                      </ul>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div>
+                      <h4 class="font-semibold text-gray-700 mb-1">Mobile</h4>
+                      <ul class="list-disc list-inside ml-4">
+                        <li>Dart</li>
+                        <li>Flutter</li>
+                        <li>Material Design</li>
+                      </ul>
+                    </div>
+                  </div>
+                </details>
+              </div>
+
+              <!-- Backend -->
+              <div class="w-full md:w-[48%] lg:w-[32%]">
+                <details class="group border rounded-lg p-4">
+                  <summary
+                    class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-600"
+                  >
+                    Backend
+                  </summary>
+                  <ul class="mt-2 list-disc list-inside text-sm text-gray-600">
+                    <li>Python</li>
+                    <li>FastAPI</li>
+                    <li>Supabase (DB, Storage, Auth)</li>
+                    <li>PostgreSQL</li>
+                  </ul>
+                </details>
+              </div>
+
+              <!-- AI/ML -->
+              <div class="w-full md:w-[48%] lg:w-[32%]">
+                <details class="group border rounded-lg p-4">
+                  <summary
+                    class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-600"
+                  >
+                    AI/ML
+                  </summary>
+                  <ul class="mt-2 list-disc list-inside text-sm text-gray-600">
+                    <li>Python</li>
+                    <li>TensorFlow, PyTorch, scikit-learn, Keras</li>
+                    <li>NumPy, Pandas, Seaborn, Matplotlib</li>
+                    <li>OpenCV</li>
+                    <li>Azure ML Studio</li>
+                  </ul>
+                </details>
+              </div>
+
+              <!-- DevOps -->
+              <div class="w-full md:w-[48%] lg:w-[32%]">
+                <details class="group border rounded-lg p-4">
+                  <summary
+                    class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-600"
+                  >
+                    DevOps
+                  </summary>
+                  <ul class="mt-2 list-disc list-inside text-sm text-gray-600">
+                    <li>Git</li>
+                    <li>GitHub</li>
+                    <li>GitHub Actions</li>
+                    <li>Docker</li>
+                    <li>Vercel, Firebase Hosting</li>
+                  </ul>
+                </details>
+              </div>
+
+              <!-- AI Tools -->
+              <div class="w-full md:w-[48%] lg:w-[32%]">
+                <details class="group border rounded-lg p-4">
+                  <summary
+                    class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-600"
+                  >
+                    AI Tools
+                  </summary>
+                  <ul class="mt-2 list-disc list-inside text-sm text-gray-600">
+                    <li>ChatGPT, Claude, Gemini</li>
+                    <li>PearAI, Cursor</li>
+                    <li>DiagramGPT</li>
+                  </ul>
+                </details>
+              </div>
+
+              <!-- Other Tools -->
+              <div class="w-full md:w-[48%] lg:w-[32%]">
+                <details class="group border rounded-lg p-4">
+                  <summary
+                    class="cursor-pointer font-semibold text-gray-700 group-open:text-blue-600"
+                  >
+                    Other Tools
+                  </summary>
+                  <ul class="mt-2 list-disc list-inside text-sm text-gray-600">
+                    <li>Postman</li>
+                    <li>Azure Data Studio</li>
+                    <li>pgAdmin</li>
+                    <li>n8n</li>
+                    <li>Android Studio</li>
+                  </ul>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">
+              Projects
+            </h2>
+
+            <div class="space-y-4">
+              <!-- Dropdown Template with Grid -->
+              <details class="group border rounded-lg p-4">
+                <summary
+                  class="flex items-center justify-between font-semibold text-gray-700 group-open:text-blue-600 cursor-pointer"
+                >
+                  UI/UX
+                  <svg
+                    class="w-5 h-5 ml-2 transition-transform duration-300 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div
+                  class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- Repeat for each category -->
+              <details class="group border rounded-lg p-4">
+                <summary
+                  class="flex items-center justify-between font-semibold text-gray-700 group-open:text-blue-600 cursor-pointer"
+                >
+                  Web Development
+                  <svg
+                    class="w-5 h-5 ml-2 transition-transform duration-300 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div
+                  class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+                >
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="project-card-images/OmniChat.png"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          OmniChat.AI
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="project-card-images/HeatIndex.png"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Heat Index Advisor
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="project-card-images/OneSwipe.png"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          OneSwipe
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="group border rounded-lg p-4">
+                <summary
+                  class="flex items-center justify-between font-semibold text-gray-700 group-open:text-blue-600 cursor-pointer"
+                >
+                  Mobile Development
+                  <svg
+                    class="w-5 h-5 ml-2 transition-transform duration-300 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div
+                  class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="group border rounded-lg p-4">
+                <summary
+                  class="flex items-center justify-between font-semibold text-gray-700 group-open:text-blue-600 cursor-pointer"
+                >
+                  AI/ML
+                  <svg
+                    class="w-5 h-5 ml-2 transition-transform duration-300 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div
+                  class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="group border rounded-lg p-4">
+                <summary
+                  class="flex items-center justify-between font-semibold text-gray-700 group-open:text-blue-600 cursor-pointer"
+                >
+                  Data Projects
+                  <svg
+                    class="w-5 h-5 ml-2 transition-transform duration-300 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div
+                  class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="group border rounded-lg p-4">
+                <summary
+                  class="flex items-center justify-between font-semibold text-gray-700 group-open:text-blue-600 cursor-pointer"
+                >
+                  Other Projects
+                  <svg
+                    class="w-5 h-5 ml-2 transition-transform duration-300 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div
+                  class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div
+                    class="overflow-hidden border rounded-lg shadow transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg bg-white h-[400px] flex flex-col"
+                  >
+                    <!-- Top Image -->
+                    <div class="h-[200px] w-full">
+                      <img
+                        src="your-image-url.jpg"
+                        alt="Project Name"
+                        class="object-cover w-full h-full"
+                      />
+                    </div>
+
+                    <!-- Bottom Content -->
+                    <div class="p-4 flex flex-col justify-between flex-1">
+                      <!-- Title & Description -->
+                      <div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">
+                          Project Name
+                        </h3>
+                        <p class="text-sm text-gray-600 line-clamp-2">
+                          This is a brief description that will be truncated if
+                          too long.
+                        </p>
+                      </div>
+
+                      <!-- Centered Button -->
+                      <a
+                        href="https://github.com/m3mentomor1/OmniChat.AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-4 bg-gray-800 text-white text-sm font-medium flex items-center justify-center gap-2 py-2 px-4 rounded hover:bg-gray-700 transition-colors"
+                      >
+                        View Project
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 3h7m0 0v7m0-7L10 14"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="licenses" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">
+              Licenses / Certifications / Awards
+            </h2>
+
+            <!-- Tabs -->
+            <div class="flex gap-4 mb-6 overflow-x-auto">
+              <button
+                class="tab-btn text-gray-800 pb-2 border-b-2 border-gray-800"
+                data-filter="course"
+              >
+                Course, Test, & Exam Completion
+              </button>
+              <button
+                class="tab-btn text-gray-600 pb-2 border-b-2 border-transparent"
+                data-filter="seminar"
+              >
+                Seminars, Workshops, & Event Participation
+              </button>
+              <button
+                class="tab-btn text-gray-600 pb-2 border-b-2 border-transparent"
+                data-filter="honor"
+              >
+                Honors & Awards
+              </button>
+            </div>
+
+            <!-- Carousel -->
+            <div class="relative">
+              <!-- Fading Overlays -->
+              <div
+                class="hidden md:block absolute left-0 top-0 bottom-0 w-12 z-20 pointer-events-none bg-gradient-to-r from-white/100 to-transparent"
+              ></div>
+              <div
+                class="hidden md:block absolute right-0 top-0 bottom-0 w-12 z-20 pointer-events-none bg-gradient-to-l from-white/100 to-transparent"
+              ></div>
+
+              <!-- Left Button -->
+              <button
+                class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition duration-300"
+                onclick="scrollSlider('slider-licenses', -1)"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <!-- Slider -->
+              <div
+                id="slider-licenses"
+                class="overflow-x-auto scroll-smooth flex gap-6 pb-4 snap-x snap-mandatory scrollbar-hide relative z-0"
+              >
+                <!-- ===== COURSE CARDS ===== -->
+
+                <div
+                  data-type="course"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <img
+                    src="cert-card-images/n8n-course.png"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">
+                      n8n Course: No Code AI Agent Builder
+                    </h3>
+                    <p class="text-sm">Issued by: Simplilearn</p>
+                    <p class="text-sm">Date: June 2025</p>
+                    <a
+                      href="https://www.simplilearn.com/free-n8n-no-code-ai-agent-builder-course-skillup"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  data-type="course"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <img
+                    src="cert-card-images/ML-Pipelines.png"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">
+                      Machine Learning Pipelines with Azure ML Studio
+                    </h3>
+                    <p class="text-sm">Issued by: Coursera</p>
+                    <p class="text-sm">Date: Feb 2025</p>
+                    <a
+                      href="https://coursera.org/share/b4f9425888ba22df1fcce48a176e4236"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  data-type="course"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <img
+                    src="certificate-images/data-science-cert.png"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">
+                      Data Science Specialization
+                    </h3>
+                    <p class="text-sm">Issued by: IBM</p>
+                    <p class="text-sm">Date: Jan 2025</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  data-type="course"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <img
+                    src="cert-card-images/cloud-cert.png"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">Cloud Fundamentals</h3>
+                    <p class="text-sm">Issued by: Microsoft</p>
+                    <p class="text-sm">Date: Dec 2024</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- ===== SEMINAR CARDS ===== -->
+                <div
+                  data-type="seminar"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 hidden shadow-md"
+                >
+                  <img
+                    src="certificate-images/seminar1.jpg"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">
+                      AI Conference Participation
+                    </h3>
+                    <p class="text-sm">Event by: AI Society PH</p>
+                    <p class="text-sm">Date: Nov 2024</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  data-type="seminar"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 hidden shadow-md"
+                >
+                  <img
+                    src="certificate-images/seminar2.jpg"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">Web Dev Bootcamp</h3>
+                    <p class="text-sm">Hosted by: DevCon PH</p>
+                    <p class="text-sm">Date: Aug 2024</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  data-type="seminar"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 hidden shadow-md"
+                >
+                  <img
+                    src="certificate-images/seminar3.jpg"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">Cybersecurity Panel</h3>
+                    <p class="text-sm">By: PH Infosec Org</p>
+                    <p class="text-sm">Date: July 2024</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- ===== HONOR CARDS ===== -->
+                <div
+                  data-type="honor"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 hidden shadow-md"
+                >
+                  <img
+                    src="certificate-images/award1.jpg"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">Dean's Lister</h3>
+                    <p class="text-sm">TIP QC</p>
+                    <p class="text-sm">Sem 1, 2024</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  data-type="honor"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 hidden shadow-md"
+                >
+                  <img
+                    src="certificate-images/award2.jpg"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">Best Capstone Award</h3>
+                    <p class="text-sm">TIP Manila</p>
+                    <p class="text-sm">June 2024</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  data-type="honor"
+                  class="relative min-w-[300px] md:min-w-[500px] h-64 rounded-lg overflow-hidden snap-start flex-shrink-0 hidden shadow-md"
+                >
+                  <img
+                    src="certificate-images/award3.jpg"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div
+                    class="absolute bottom-4 left-4 bg-white/90 text-gray-800 rounded-xl px-4 py-2 shadow-xl z-10 w-[90%] max-w-[80%]"
+                  >
+                    <h3 class="text-base font-semibold">Academic Excellence</h3>
+                    <p class="text-sm">TIP QC</p>
+                    <p class="text-sm">AY 2023–2024</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-600 inline-flex items-center gap-1 mt-1 hover:underline"
+                    >
+                      Learn more
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          d="M13.5 6H18m0 0v4.5M18 6l-9 9"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Button -->
+              <button
+                class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition duration-300"
+                onclick="scrollSlider('slider-licenses', 1)"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="competitions" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">
+              Competitions / Hackathons
+            </h2>
+
+            <!-- Carousel -->
+            <div class="relative">
+              <!-- Fading Overlays (Desktop only) -->
+              <div
+                class="hidden md:block absolute left-0 top-0 bottom-0 w-12 z-20 pointer-events-none bg-gradient-to-r from-white/100 to-transparent"
+              ></div>
+              <div
+                class="hidden md:block absolute right-0 top-0 bottom-0 w-12 z-20 pointer-events-none bg-gradient-to-l from-white/100 to-transparent"
+              ></div>
+
+              <!-- Left Button -->
+              <button
+                class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition duration-300"
+                onclick="scrollSlider('competitions-slider', -1)"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <!-- Slider -->
+              <div
+                id="competitions-slider"
+                class="overflow-x-auto scroll-smooth flex gap-6 pb-4 snap-x snap-mandatory scrollbar-hide relative z-0 sm:-mx-0 sm:px-0 -mx-4 px-4 touch-pan-x"
+              >
+                <!-- Card 1 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="competitions-pics/Meralco IDOL Hackathon/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Meralco IDOL Hackathon/2.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Meralco IDOL Hackathon/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Meralco IDOL Hackathon/4.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Meralco IDOL Hackathon/5.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Meralco IDOL Hackathon/6.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <h3 class="text-lg font-semibold">
+                      Meralco IDOL Hackathon
+                    </h3>
+                    <p class="text-sm">Hosted by: Meralco Power Academy</p>
+                    <p class="text-sm">Nov 2023</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="competitions-pics/ISEAC 2023/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/ISEAC 2023/2.jpeg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/ISEAC 2023/3.jpeg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/ISEAC 2023/4.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/ISEAC 2023/5.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/ISEAC 2023/6.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <h3 class="text-lg font-semibold">
+                      International Symposium on Education and AI Convergence -
+                      ISEAC 2023
+                    </h3>
+                    <p class="text-sm">Hosted by: UPOU</p>
+                    <p class="text-sm">Date: March 2025</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="competitions-pics/Imagine Cup 2023/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Imagine Cup 2023/2.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Imagine Cup 2023/3.png"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Imagine Cup 2023/4.jpeg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Imagine Cup 2023/5.jpeg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Imagine Cup 2023/6.jpeg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Imagine Cup 2023/7.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="competitions-pics/Imagine Cup 2023/8.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <h3 class="text-lg font-semibold">
+                      Imagine Cup 2023: PH Finals
+                    </h3>
+                    <p class="text-sm">Hosted by: Microsoft</p>
+                    <p class="text-sm">Date: Jan 2025</p>
+                    <a
+                      href="#"
+                      target="_blank"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Button -->
+              <button
+                class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition duration-300"
+                onclick="scrollSlider('competitions-slider', 1)"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- +X Overlay Script -->
+        <script>
+          document.querySelectorAll(".card-images").forEach((card) => {
+            const images = Array.from(card.querySelectorAll("img"));
+            const totalImages = images.length;
+
+            if (totalImages > 4) {
+              images.slice(4).forEach((img) => (img.style.display = "none"));
+
+              const fourthImg = images[3];
+              const wrapper = document.createElement("div");
+              wrapper.className = "relative";
+              fourthImg.parentNode.insertBefore(wrapper, fourthImg);
+              wrapper.appendChild(fourthImg);
+
+              const overlay = document.createElement("div");
+              overlay.className =
+                "absolute inset-0 bg-black/60 text-white text-lg font-semibold flex items-center justify-center";
+              overlay.innerText = `+${totalImages - 4}`;
+              wrapper.appendChild(overlay);
+            }
+          });
+
+          // Optional scroll buttons handler
+          function scrollSlider(id, direction) {
+            const el = document.getElementById(id);
+            el.scrollBy({ left: direction * 320, behavior: "smooth" });
+          }
+        </script>
+      </section>
+
+      <section id="leadership" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">
+              Leadership Background
+            </h2>
+
+            <!-- Carousel -->
+            <div class="relative">
+              <!-- Fading Overlays -->
+              <div
+                class="hidden md:block absolute left-0 top-0 bottom-0 w-12 z-20 pointer-events-none bg-gradient-to-r from-white/100 to-transparent"
+              ></div>
+              <div
+                class="hidden md:block absolute right-0 top-0 bottom-0 w-12 z-20 pointer-events-none bg-gradient-to-l from-white/100 to-transparent"
+              ></div>
+
+              <!-- Left Button -->
+              <button
+                class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition duration-300"
+                onclick="scrollSlider('leadership-slider', -1)"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <!-- Slider -->
+              <div
+                id="leadership-slider"
+                class="overflow-x-auto scroll-smooth flex gap-6 pb-4 snap-x snap-mandatory scrollbar-hide relative z-0 sm:-mx-0 sm:px-0 -mx-4 px-4 touch-pan-x"
+              >
+                <!-- CARD 1 -->
+                <div
+                  class="min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md bg-white flex"
+                >
+                  <div
+                    class="w-[40%] bg-[#E0F7FA] p-4 flex flex-col justify-start text-gray-800"
+                  >
+                    <h3 class="text-lg font-semibold">
+                      Campus DEVCON Ambassador
+                    </h3>
+                    <p class="text-sm">DEVCON Philippines</p>
+                    <p class="text-sm">Jan 2024 - Dec 2024</p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-600 hover:underline mt-2 block"
+                      >Learn more</a
+                    >
+                  </div>
+                  <div
+                    class="w-[60%] grid grid-rows-2 grid-cols-2 gap-0 card-images"
+                  >
+                    <img
+                      src="leadership-pics/Org President/1.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/Org President/2.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/Org President/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/Org President/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div
+                  class="min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md bg-white flex"
+                >
+                  <div
+                    class="w-[40%] bg-[#FFF3E0] p-4 flex flex-col justify-start text-gray-800"
+                  >
+                    <h3 class="text-lg font-semibold">
+                      Microsoft Learn Student Ambassador (Alpha)
+                    </h3>
+                    <p class="text-sm">Microsoft Learn Student Ambassadors</p>
+                    <p class="text-sm">Jan 2024 - Oct 2024</p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-600 hover:underline mt-2 block"
+                      >Learn more</a
+                    >
+                  </div>
+                  <div
+                    class="w-[60%] grid grid-rows-2 grid-cols-2 gap-0 card-images"
+                  >
+                    <img
+                      src="leadership-pics/Tech Conf/1.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/Tech Conf/2.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/Tech Conf/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div
+                  class="min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md bg-white flex"
+                >
+                  <div
+                    class="w-[40%] bg-[#F3E5F5] p-4 flex flex-col justify-start text-gray-800"
+                  >
+                    <h3 class="text-lg font-semibold">
+                      Founder/President, Creatives Committee Head
+                    </h3>
+                    <p class="text-sm">
+                      Microsoft Student Community - T.I.P. Quezon City
+                    </p>
+                    <p class="text-sm">Aug 2023 - May 2024</p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-600 hover:underline mt-2 block"
+                      >Learn more</a
+                    >
+                  </div>
+                  <div
+                    class="w-[60%] grid grid-rows-2 grid-cols-2 gap-0 card-images"
+                  >
+                    <img
+                      src="leadership-pics/AI VP/1.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/AI VP/2.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/AI VP/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div
+                  class="min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md bg-white flex"
+                >
+                  <div
+                    class="w-[40%] bg-[#E8F5E9] p-4 flex flex-col justify-start text-gray-800"
+                  >
+                    <h3 class="text-lg font-semibold">
+                      Research Committee Member
+                    </h3>
+                    <p class="text-sm">
+                      Microsoft Student Community - T.I.P. Manila
+                    </p>
+                    <p class="text-sm">Nov 2022 - May 2023</p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-600 hover:underline mt-2 block"
+                      >Learn more</a
+                    >
+                  </div>
+                  <div
+                    class="w-[60%] grid grid-rows-2 grid-cols-2 gap-0 card-images"
+                  >
+                    <img
+                      src="leadership-pics/Outreach/1.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/Outreach/2.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="leadership-pics/Outreach/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Button -->
+              <button
+                class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition duration-300"
+                onclick="scrollSlider('leadership-slider', 1)"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overlay + Scroll Script -->
+        <script>
+          document.querySelectorAll(".card-images").forEach((card) => {
+            const images = Array.from(card.querySelectorAll("img"));
+            const totalImages = images.length;
+
+            if (totalImages > 3) {
+              images.slice(3).forEach((img) => (img.style.display = "none"));
+              const thirdImg = images[2];
+              const wrapper = document.createElement("div");
+              wrapper.className = "relative";
+              thirdImg.parentNode.insertBefore(wrapper, thirdImg);
+              wrapper.appendChild(thirdImg);
+
+              const overlay = document.createElement("div");
+              overlay.className =
+                "absolute inset-0 bg-black/60 text-white text-lg font-semibold flex items-center justify-center";
+              overlay.innerText = `+${totalImages - 3}`;
+              wrapper.appendChild(overlay);
+            }
+          });
+
+          function scrollSlider(id, direction) {
+            const el = document.getElementById(id);
+            el.scrollBy({ left: direction * 320, behavior: "smooth" });
+          }
+        </script>
+      </section>
+
+      <section id="volunteering" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">Volunteering</h2>
+
+            <!-- Carousel -->
+            <div class="relative">
+              <!-- Fading Overlays -->
+              <div
+                class="hidden md:block absolute left-0 top-0 bottom-0 w-12 z-20 pointer-events-none bg-gradient-to-r from-white/100 to-transparent"
+              ></div>
+              <div
+                class="hidden md:block absolute right-0 top-0 bottom-0 w-12 z-20 pointer-events-none bg-gradient-to-l from-white/100 to-transparent"
+              ></div>
+
+              <!-- Left Button -->
+              <button
+                class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition duration-300"
+                onclick="scrollSlider('volunteering-slider', -1)"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <!-- Slider -->
+              <div
+                id="volunteering-slider"
+                class="overflow-x-auto scroll-smooth flex gap-6 pb-4 snap-x snap-mandatory scrollbar-hide relative z-0 sm:-mx-0 sm:px-0 -mx-4 px-4 touch-pan-x"
+              >
+                <!-- Card 1 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="volunteering-pics/OutreachEvent/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/OutreachEvent/2.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/OutreachEvent/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/OutreachEvent/4.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/OutreachEvent/5.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/OutreachEvent/6.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <p class="text-sm">Dec 7, 2024</p>
+                    <h3 class="text-lg font-semibold">
+                      Campus DEVCON Summit 2024: Tech Nexus
+                    </h3>
+                    <p class="text-sm">Campus DEVCON Ambassadors</p>
+                    <p
+                      class="text-sm mb-1 flex items-center gap-2 group"
+                      onclick="copyEmail()"
+                      title="Click to copy email"
+                    >
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                      <span>University of Batangas - Lipa Campus</span>
+                    </p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      target="_blank"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="volunteering-pics/CleanupDrive/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/CleanupDrive/2.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/CleanupDrive/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/CleanupDrive/4.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/CleanupDrive/5.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <p class="text-sm">Oct 4–5, 2024</p>
+                    <h3 class="text-lg font-semibold">
+                      Cre-AI-tivity: AIdea-Driven Innovations in Tech and Play
+                    </h3>
+                    <p class="text-sm">
+                      Campus DEVCON Ambassadors • Microsoft Learn Student
+                      Ambassadors • T.I.P. QC Computer Engineering Department
+                    </p>
+                    <p
+                      class="text-sm mb-1 flex items-center gap-2 group"
+                      onclick="copyEmail()"
+                      title="Click to copy email"
+                    >
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                      <span>Microsoft Teams</span>
+                    </p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      target="_blank"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="volunteering-pics/BloodDrive/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/BloodDrive/2.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/BloodDrive/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/BloodDrive/4.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/BloodDrive/5.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <p class="text-sm">Sept 13, 2024</p>
+                    <h3 class="text-lg font-semibold">
+                      No-code AI: Automated Model Training Using Azure Machine
+                      Learning Studio
+                    </h3>
+                    <p class="text-sm">Microsoft Learn Student Ambassadors</p>
+                    <p
+                      class="text-sm mb-1 flex items-center gap-2 group"
+                      onclick="copyEmail()"
+                      title="Click to copy email"
+                    >
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                      <span>Microsoft Teams</span>
+                    </p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      target="_blank"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="volunteering-pics/TreePlanting/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/TreePlanting/2.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/TreePlanting/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/TreePlanting/4.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <p class="text-sm">Nov 18, 2023</p>
+                    <h3 class="text-lg font-semibold">
+                      General Assembly: Ignite Your Inner Curiosity!
+                    </h3>
+                    <p class="text-sm">
+                      Microsoft Student Community - T.I.P. Quezon City
+                    </p>
+                    <p
+                      class="text-sm mb-1 flex items-center gap-2 group"
+                      onclick="copyEmail()"
+                      title="Click to copy email"
+                    >
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                      <span>Microsoft Teams</span>
+                    </p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      target="_blank"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="volunteering-pics/TeachingOutreach/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/TeachingOutreach/2.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/TeachingOutreach/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/TeachingOutreach/4.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <p class="text-sm">Nov 17 / 25, 2023</p>
+                    <h3 class="text-lg font-semibold">
+                      RETROTECH: Crack the Code, Seize the Flag!! (Capture The
+                      Flag 2023)
+                    </h3>
+                    <p class="text-sm">
+                      Junior Information Systems Security Association - T.I.P.
+                      QC Chapter
+                    </p>
+                    <p
+                      class="text-sm mb-1 flex items-center gap-2 group"
+                      onclick="copyEmail()"
+                      title="Click to copy email"
+                    >
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                      <span>Microsoft Teams</span>
+                    </p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      target="_blank"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div
+                  class="relative min-w-[300px] md:min-w-[650px] h-[200px] md:h-[350px] rounded-lg overflow-hidden snap-start flex-shrink-0 shadow-md"
+                >
+                  <div
+                    class="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-0 card-images"
+                  >
+                    <img
+                      src="volunteering-pics/ReliefOps/1.jpg"
+                      class="col-span-2 row-span-2 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/ReliefOps/2.jpg"
+                      class="col-span-2 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/ReliefOps/3.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                    <img
+                      src="volunteering-pics/ReliefOps/4.jpg"
+                      class="col-span-1 row-span-1 w-full h-full object-cover"
+                    />
+                  </div>
+                  <div
+                    class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/80 to-transparent z-10"
+                  ></div>
+                  <div
+                    class="absolute left-4 top-4 z-20 text-white max-w-[50%] space-y-1"
+                  >
+                    <p class="text-sm">Mar 25, 2023</p>
+                    <h3 class="text-lg font-semibold">
+                      Building Bridges: Celebrating Student Leadership and
+                      Technical Excellence
+                    </h3>
+                    <p class="text-sm">
+                      Microsoft Student Community - T.I.P. Manila
+                    </p>
+                    <p
+                      class="text-sm mb-1 flex items-center gap-2 group"
+                      onclick="copyEmail()"
+                      title="Click to copy email"
+                    >
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                      <span>Microsoft Teams</span>
+                    </p>
+                    <a
+                      href="#"
+                      class="text-sm text-blue-300 hover:underline mt-2 block"
+                      target="_blank"
+                      >Learn more</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Button -->
+              <button
+                class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-white p-2 rounded-full shadow-lg hover:shadow-xl transition duration-300"
+                onclick="scrollSlider('volunteering-slider', 1)"
+              >
+                <svg
+                  class="w-6 h-6 text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- +X Overlay Script -->
+        <script>
+          document.querySelectorAll(".card-images").forEach((card) => {
+            const images = Array.from(card.querySelectorAll("img"));
+            const totalImages = images.length;
+
+            if (totalImages > 4) {
+              images.slice(4).forEach((img) => (img.style.display = "none"));
+              const fourthImg = images[3];
+              const wrapper = document.createElement("div");
+              wrapper.className = "relative";
+              fourthImg.parentNode.insertBefore(wrapper, fourthImg);
+              wrapper.appendChild(fourthImg);
+
+              const overlay = document.createElement("div");
+              overlay.className =
+                "absolute inset-0 bg-black/60 text-white text-lg font-semibold flex items-center justify-center";
+              overlay.innerText = `+${totalImages - 4}`;
+              wrapper.appendChild(overlay);
+            }
+          });
+
+          function scrollSlider(id, direction) {
+            const el = document.getElementById(id);
+            el.scrollBy({ left: direction * 320, behavior: "smooth" });
+          }
+        </script>
+      </section>
+
+      <section id="contact" class="bg-[#FAF9F6]">
+        <div class="max-w-7xl mx-auto px-8">
+          <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Contact</h2>
+
+            <!-- 3 Rectangles Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- Email / Phone Box -->
+              <div class="bg-[#F3F4F6] rounded-xl p-6 shadow-md">
+                <h3
+                  class="text-xl font-semibold text-center text-gray-800 mb-4"
+                >
+                  Email / Phone
+                </h3>
+                <p
+                  class="text-gray-700 text-sm mb-1 flex items-center gap-2 cursor-pointer group"
+                  onclick="copyEmail()"
+                  title="Click to copy email"
+                >
+                  <i
+                    data-lucide="mail"
+                    class="w-4 h-4 text-gray-600 group-hover:text-blue-600"
+                  ></i>
+                  <span class="group-hover:text-blue-600"
+                    >your.email@example.com</span
+                  >
+                </p>
+
+                <p
+                  class="text-gray-700 text-sm mb-1 flex items-center gap-2 cursor-pointer group"
+                  onclick="copyPhone()"
+                  title="Click to copy phone number"
+                >
+                  <i
+                    data-lucide="smartphone"
+                    class="w-4 h-4 text-gray-600 group-hover:text-blue-600"
+                  ></i>
+                  <span class="group-hover:text-blue-600"
+                    >+63 967 237 6305</span
+                  >
+                </p>
+              </div>
+
+              <!-- Socials Box -->
+              <div class="bg-[#F3F4F6] rounded-xl p-6 shadow-md">
+                <h3
+                  class="text-xl font-semibold text-center text-gray-800 mb-5"
+                >
+                  Socials
+                </h3>
+                <div class="flex justify-center items-center gap-4">
+                  <a
+                    href="https://www.linkedin.com/in/shain-sahagun/"
+                    target="_blank"
+                  >
+                    <img
+                      src="contacts-icons/LinkedIn-icon-black.png"
+                      alt="LinkedIn"
+                      class="w-8 h-8 hover:scale-110 transition"
+                    />
+                  </a>
+                  <a href="https://github.com/m3mentomor1" target="_blank">
+                    <img
+                      src="contacts-icons/GitHub-icon-black.png"
+                      alt="GitHub"
+                      class="w-8 h-8 hover:scale-110 transition"
+                    />
+                  </a>
+                  <a
+                    href="https://www.behance.net/shainsahagun"
+                    target="_blank"
+                  >
+                    <img
+                      src="contacts-icons/Behance.png"
+                      alt="Behance"
+                      class="w-8 h-8 hover:scale-110 transition"
+                    />
+                  </a>
+                </div>
+              </div>
+
+              <!-- Request CV Box -->
+              <div class="bg-[#F3F4F6] rounded-xl p-6 shadow-md">
+                <h3
+                  class="text-xl font-semibold text-center text-gray-800 mb-4"
+                >
+                  Request CV / Resume
+                </h3>
+                <p class="text-gray-700 text-sm mb-4">
+                  Need a copy of my latest resume or CV? Feel free to reach out.
+                </p>
+                <a
+                  href="mailto:your.email@example.com?subject=Requesting your CV"
+                  class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm"
+                >
+                  Request Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <script>
+        lucide.createIcons();
+      </script>
+      <script>
+        function copyPhone() {
+          const phone = "639672376305";
+          navigator.clipboard.writeText(phone).then(() => {
+            alert("Phone number copied to clipboard!");
+          });
+        }
+
+        function copyEmail() {
+          const email = "your.email@example.com";
+          navigator.clipboard.writeText(email).then(() => {
+            alert("Email copied to clipboard!");
+          });
+        }
+      </script>
+    </main>
+
+    <!-- Script -->
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const moreBtn = document.getElementById("more-btn");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+      const arrowIcon = document.getElementById("arrow-icon");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      moreBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle("hidden");
+        arrowIcon.classList.toggle("rotate-180");
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!dropdownMenu.contains(e.target) && !moreBtn.contains(e.target)) {
+          dropdownMenu.classList.add("hidden");
+          arrowIcon.classList.remove("rotate-180");
+        }
+      });
+
+      function openModal(id) {
+        document.getElementById(id).classList.remove("hidden");
+      }
+
+      function closeModal(id) {
+        document.getElementById(id).classList.add("hidden");
+      }
+
+      // Optional: click outside to close
+      document.addEventListener("click", function (e) {
+        document.querySelectorAll('[id^="modal-"]').forEach((modal) => {
+          if (
+            !modal.classList.contains("hidden") &&
+            !modal.querySelector(".rounded-lg").contains(e.target) &&
+            !e.target.closest('[onclick^="openModal"]')
+          ) {
+            modal.classList.add("hidden");
+          }
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const headerName = document.getElementById("header-name");
+        const aboutSection = document.getElementById("about");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // In "About" section — hide the name
+                headerName.classList.add("opacity-0");
+                headerName.classList.add("pointer-events-none");
+              } else {
+                // Scrolled out of "About" — show the name
+                headerName.classList.remove("opacity-0");
+                headerName.classList.remove("pointer-events-none");
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+
+        observer.observe(aboutSection);
+      });
+
+      // 🔽 Landmark: FILTER LOGIC FOR LICENSES SECTION
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const slides = document.querySelectorAll("#slider-licenses > div");
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+
+          tabButtons.forEach((btn) => {
+            btn.classList.remove("border-gray-800", "text-gray-800");
+            btn.classList.add("text-gray-600", "border-transparent");
+          });
+
+          button.classList.add("border-gray-800", "text-gray-800");
+          button.classList.remove("text-gray-600", "border-transparent");
+
+          slides.forEach((card) => {
+            if (card.dataset.type === filter) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+
+          // Reset scroll to left
+          document.getElementById("slider").scrollLeft = 0;
+        });
+      });
+
+      // Slider scroll for arrows
+      function scrollSlider(sliderId, direction) {
+        const slider = document.getElementById(sliderId);
+        const card = slider.querySelector("div:not(.hidden)");
+        if (!card) return;
+
+        const scrollAmount = card.offsetWidth + 24; // +gap
+        slider.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+      }
+    </script>
+    <!-- Modal: UI Developer -->
+    <div
+      id="modal-ui-dev"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-md w-full relative">
+        <button
+          class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-2xl"
+          onclick="closeModal('modal-ui-dev')"
+        >
+          &times;
+        </button>
+        <h3 class="text-xl font-bold mb-2">
+          UI Developer @ Exist Software Labs, Inc.
+        </h3>
+        <p class="text-gray-600 text-sm mb-2">Mar 2025 – May 2025</p>
+        <p class="text-gray-700 text-sm">
+          Worked on UI implementation for enterprise apps using Angular,
+          Material UI, and internal design systems.
+        </p>
+      </div>
+    </div>
+
+    <!-- Modal: IT Director -->
+    <div
+      id="modal-it-dir"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-md w-full relative">
+        <button
+          class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-2xl"
+          onclick="closeModal('modal-it-dir')"
+        >
+          &times;
+        </button>
+        <h3 class="text-xl font-bold mb-2">IT Director (Trainee) @ SOLHAUS</h3>
+        <p class="text-gray-600 text-sm mb-2">July 2024</p>
+        <p class="text-gray-700 text-sm">
+          Led small teams on low-code tool evaluation, platform prototyping, and
+          data strategy mapping for internal automation.
+        </p>
+      </div>
+    </div>
+
+    <!-- Modal: Web Development Intern -->
+    <div
+      id="modal-chatgenie"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-md w-full relative">
+        <button
+          class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-2xl"
+          onclick="closeModal('modal-chatgenie')"
+        >
+          &times;
+        </button>
+        <h3 class="text-xl font-bold mb-2">
+          Web Development Intern @ ChatGenie.PH
+        </h3>
+        <p class="text-gray-600 text-sm mb-2">Mar 2024 – April 2023</p>
+        <p class="text-gray-700 text-sm">
+          Built frontend admin dashboards in React, assisted in debugging
+          merchant portals, and implemented minor API endpoints.
+        </p>
+      </div>
+    </div>
+
+    <!-- Modal: Customer Experience Agent -->
+    <div
+      id="modal-alorica"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-md w-full relative">
+        <button
+          class="absolute top-2 right-4 text-gray-500 hover:text-gray-800 text-2xl"
+          onclick="closeModal('modal-alorica')"
+        >
+          &times;
+        </button>
+        <h3 class="text-xl font-bold mb-2">
+          Customer Experience Agent @ Alorica
+        </h3>
+        <p class="text-gray-600 text-sm mb-2">Mar 2024</p>
+        <p class="text-gray-700 text-sm">
+          Handled inbound customer service calls for a retail client; documented
+          support issues and feedback.
+        </p>
+      </div>
+    </div>
+
+    <footer class="text-center text-gray-500 text-sm py-6 bg-[#FAF9F6]">
+      © 2025 Shain Sahagun
+    </footer>
+  </body>
+</html>
