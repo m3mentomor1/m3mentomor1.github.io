@@ -2260,7 +2260,7 @@ function copyEmail() {
   const isDark = () => root.getAttribute("data-theme") === "dark";
 
   function onThemeChange() {
-    if (themeColor) themeColor.setAttribute("content", isDark() ? "#0E1012" : "#ECE9E1");
+    if (themeColor) themeColor.setAttribute("content", isDark() ? "#0C1112" : "#E5EAEB");
     readMapStyle();
     buffer.valid = false;
     if (geo) frame();
