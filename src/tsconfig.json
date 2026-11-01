@@ -1,0 +1,15 @@
+{
+  // Type-checks the browser code. Nothing is emitted here: the build strips the
+  // types with Node (see _tools/site.ts), so only erasable TypeScript is allowed.
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2023", "dom", "dom.iterable"],
+    "module": "esnext",
+    "types": [],
+    "strict": true,
+    "noEmit": true,
+    "erasableSyntaxOnly": true,
+    "skipLibCheck": true
+  },
+  "include": ["*.ts"]
+}

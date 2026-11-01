@@ -1,0 +1,17 @@
+{
+  "name": "m3mentomor1.github.io",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --disable-warning=ExperimentalWarning _tools/serve.ts",
+    "build": "node --disable-warning=ExperimentalWarning _tools/build.ts",
+    "check": "tsc -p src && tsc -p _tools"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2"
+  }
+}

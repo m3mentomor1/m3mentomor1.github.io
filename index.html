@@ -1,16 +1,13 @@
----
-# GitHub Pages fills in each include tag below from _includes/ when it deploys.
-# Preview locally with: node _tools/serve.mjs
-layout: null
----
 {% comment %}
-<!-- Shown only when this file is opened straight from disk. GitHub Pages removes this whole block. -->
+<!-- Page outline. The build (npm run build, which GitHub Actions runs on every push) fills in each
+     include tag below from _includes/ and drops this whole block, so the notice only shows when
+     this file is opened straight from disk. Preview with: npm run dev -->
 <div style="position: fixed; inset: 0; z-index: 2147483647; display: grid; place-items: center; padding: 24px; background: #ece9e1; color: #15171b; font: 17px/1.55 system-ui, sans-serif">
   <div style="max-width: 560px">
     <p style="margin: 0 0 14px; font: 600 12px/1 ui-monospace, monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #b83a0e">Page outline</p>
     <h1 style="margin: 0 0 14px; font: 500 34px/1.15 Georgia, serif">Open the site through the preview server</h1>
-    <p style="margin: 0 0 18px; color: #474b53">This file only lists the sections. They live in <b>_includes/</b>, and GitHub Pages fills them in when it deploys. To see the full site on your computer, run this in a terminal inside the project folder:</p>
-    <p style="margin: 0 0 18px; padding: 12px 14px; background: #f6f4ee; border: 1px solid rgba(21, 23, 27, 0.3); font: 15px/1.4 ui-monospace, monospace">node _tools/serve.mjs</p>
+    <p style="margin: 0 0 18px; color: #474b53">This file only lists the sections. They live in <b>_includes/</b>, and the build fills them in when the site deploys. To see the full site on your computer, run this in a terminal inside the project folder:</p>
+    <p style="margin: 0 0 18px; padding: 12px 14px; background: #f6f4ee; border: 1px solid rgba(21, 23, 27, 0.3); font: 15px/1.4 ui-monospace, monospace">npm run dev</p>
     <p style="margin: 0; color: #474b53">Your browser then opens <a href="http://127.0.0.1:4000/" style="color: #b83a0e">http://127.0.0.1:4000</a>, which shows the full site.</p>
   </div>
 </div>

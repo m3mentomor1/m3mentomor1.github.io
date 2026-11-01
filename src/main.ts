@@ -5,20 +5,20 @@
 const TRANSPARENT_PIXEL =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
-let lastFocused = null;
+let lastFocused: HTMLElement | null = null;
 
 function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-function openModal(id) {
+function openModal(id: string) {
   const modal = document.getElementById(id);
   if (!modal) return;
-  lastFocused = document.activeElement;
+  lastFocused = document.activeElement as HTMLElement | null;
   modal.classList.add("is-open");
   document.documentElement.classList.add("modal-open");
 
-  const gallery = modal.querySelector(".modal-gallery");
+  const gallery = modal.querySelector<HTMLElement>(".modal-gallery");
   if (gallery) {
     const firstThumb = gallery.querySelector("button[data-src]");
     if (firstThumb) selectGalleryImage(gallery.dataset.gallery, firstThumb);
@@ -26,11 +26,11 @@ function openModal(id) {
 
   const panel = modal.querySelector(".modal__panel");
   if (panel) panel.scrollTop = 0;
-  const closeBtn = modal.querySelector(".modal__close");
+  const closeBtn = modal.querySelector<HTMLElement>(".modal__close");
   if (closeBtn) closeBtn.focus({ preventScroll: true });
 }
 
-function closeModal(id) {
+function closeModal(id: string) {
   const modal = document.getElementById(id);
   if (!modal) return;
   modal.classList.remove("is-open");
@@ -42,34 +42,34 @@ function closeModal(id) {
   }
 }
 
-function selectGalleryImage(galleryId, thumbBtn) {
-  const main = document.getElementById(`gallery-main-${galleryId}`);
+function selectGalleryImage(galleryId: string | undefined, thumbBtn: Element | null) {
+  const main = document.getElementById(`gallery-main-${galleryId}`) as HTMLImageElement | null;
   if (!main || !thumbBtn) return;
-  main.src = thumbBtn.getAttribute("data-src");
+  main.src = thumbBtn.getAttribute("data-src")!;
   const gallery = thumbBtn.closest(".modal-gallery");
-  gallery.querySelectorAll("button[data-src]").forEach((btn) => {
+  gallery!.querySelectorAll("button[data-src]").forEach((btn) => {
     btn.classList.toggle("is-active", btn === thumbBtn);
   });
 }
 
-function expandGalleryImage(btn) {
-  const img = btn.parentElement.querySelector("img");
+function expandGalleryImage(btn: HTMLElement) {
+  const img = btn.parentElement!.querySelector("img");
   if (!img) return;
-  const lightbox = document.getElementById("image-lightbox");
-  const lightboxImg = document.getElementById("image-lightbox-img");
+  const lightbox = document.getElementById("image-lightbox")!;
+  const lightboxImg = document.getElementById("image-lightbox-img") as HTMLImageElement;
   lightboxImg.src = img.src;
   lightboxImg.alt = img.alt || "Expanded image";
   lightbox.classList.add("is-open");
 }
 
 function closeImageLightbox() {
-  document.getElementById("image-lightbox").classList.remove("is-open");
+  document.getElementById("image-lightbox")!.classList.remove("is-open");
 }
 
-function scrollSlider(sliderId, direction) {
+function scrollSlider(sliderId: string, direction: number) {
   const slider = document.getElementById(sliderId);
   if (!slider) return;
-  const card = Array.from(slider.children).find((c) => !c.hidden);
+  const card = Array.from(slider.children as HTMLCollectionOf<HTMLElement>).find((c) => !c.hidden);
   if (!card) return;
   const gap = parseFloat(getComputedStyle(slider).columnGap) || 0;
   slider.scrollBy({
@@ -80,7 +80,7 @@ function scrollSlider(sliderId, direction) {
 
 let toastTimer = 0;
 
-function showToast(message) {
+function showToast(message: string) {
   const toast = document.getElementById("toast");
   if (!toast) return;
   toast.textContent = message;
@@ -89,7 +89,7 @@ function showToast(message) {
   toastTimer = setTimeout(() => toast.classList.remove("is-on"), 2400);
 }
 
-function fallbackCopy(text) {
+function fallbackCopy(text: string) {
   const ta = document.createElement("textarea");
   ta.value = text;
   ta.setAttribute("readonly", "");
@@ -107,7 +107,7 @@ function fallbackCopy(text) {
   return ok;
 }
 
-function copyText(text, message) {
+function copyText(text: string, message: string) {
   const done = () => showToast(message);
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(text).then(done, () => {
@@ -139,61 +139,63 @@ function copyEmail() {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
   const wideMQ = window.matchMedia("(min-width: 900px)");
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-  const pad2 = (n) => String(n).padStart(2, "0");
-  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-  const css = (name) => getComputedStyle(root).getPropertyValue(name).trim();
+  const $ = <T extends Element = HTMLElement>(sel: string, ctx: ParentNode = document): T | null =>
+    ctx.querySelector<T>(sel);
+  const $$ = <T extends Element = HTMLElement>(sel: string, ctx: ParentNode = document): T[] =>
+    Array.from(ctx.querySelectorAll<T>(sel));
+  const pad2 = (n: number) => String(n).padStart(2, "0");
+  const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+  const css = (name: string) => getComputedStyle(root).getPropertyValue(name).trim();
   const TOPBAR = 64;
-  const hashStr = (s) => {
+  const hashStr = (s: string) => {
     let h = 2166136261;
     for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
     return h >>> 0;
   };
-  const mulberry = (seed) => () => {
+  const mulberry = (seed: number) => () => {
     seed = (seed + 0x6d2b79f5) | 0;
     let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
     t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
-  const confOf = (s) => (0.9 + (hashStr(s) % 9) / 100).toFixed(2);
+  const confOf = (s: string) => (0.9 + (hashStr(s) % 9) / 100).toFixed(2);
   const MONO_FONT = '"Atkinson Hyperlegible Mono", ui-monospace, monospace';
 
   const sections = $$("main > section[id]");
-  const routecard = $("#routecard");
-  const routeLinks = $$(".routecard__list a", routecard);
-  const routeItems = routeLinks.map((a) => a.parentElement);
-  const stopNames = routeLinks.map((a) => $(".routecard__name", a).textContent.trim());
-  const routeToggle = $("#route-toggle");
-  const menuBtn = $("#menu-btn");
-  const lightbox = $("#image-lightbox");
+  const routecard = $("#routecard")!;
+  const routeLinks = $$<HTMLAnchorElement>(".routecard__list a", routecard);
+  const routeItems = routeLinks.map((a) => a.parentElement!);
+  const stopNames = routeLinks.map((a) => $(".routecard__name", a)!.textContent.trim());
+  const routeToggle = $("#route-toggle")!;
+  const menuBtn = $("#menu-btn")!;
+  const lightbox = $("#image-lightbox")!;
   const brandEl = $("#header-name");
   const topRight = $(".topbar__right");
 
-  const popup = $("#popup");
-  const popupBar = $(".popup__bar", popup);
-  const popupBody = $("#popup-body");
-  const popupIdx = $("#popup-idx");
-  const popupCoords = $("#popup-coords");
-  const prevBtn = $("#popup-prev");
-  const nextBtn = $("#popup-next");
-  const prevName = $("#popup-prev-name");
-  const nextName = $("#popup-next-name");
-  const nextDist = $("#popup-next-dist");
-  const minBtn = $("#popup-min");
-  const handleBtn = $("#popup-handle");
-  const restoreBtn = $("#popup-restore");
-  const restoreLabel = $("#popup-restore-label");
+  const popup = $("#popup")!;
+  const popupBar = $(".popup__bar", popup)!;
+  const popupBody = $("#popup-body")!;
+  const popupIdx = $("#popup-idx")!;
+  const popupCoords = $("#popup-coords")!;
+  const prevBtn = $<HTMLButtonElement>("#popup-prev")!;
+  const nextBtn = $<HTMLButtonElement>("#popup-next")!;
+  const prevName = $("#popup-prev-name")!;
+  const nextName = $("#popup-next-name")!;
+  const nextDist = $("#popup-next-dist")!;
+  const minBtn = $("#popup-min")!;
+  const handleBtn = $("#popup-handle")!;
+  const restoreBtn = $("#popup-restore")!;
+  const restoreLabel = $("#popup-restore-label")!;
 
   /* ---------- Menu (route card on phones) ---------- */
-  function setMenu(open) {
+  function setMenu(open: boolean) {
     routecard.classList.toggle("is-open", open);
     menuBtn.setAttribute("aria-expanded", String(open));
     root.classList.toggle("menu-open", open);
   }
 
   menuBtn.addEventListener("click", () => setMenu(!routecard.classList.contains("is-open")));
-  $("#menu-close").addEventListener("click", () => setMenu(false));
+  $("#menu-close")!.addEventListener("click", () => setMenu(false));
 
   /* ---------- Modals & lightbox ---------- */
   $$(".modal").forEach((modal) => {
@@ -207,14 +209,14 @@ function copyEmail() {
   });
 
   /* ---------- Missing images → survey placeholder ---------- */
-  function markMissing(img) {
+  function markMissing(img: HTMLImageElement) {
     if (img.dataset.missing) return;
     img.dataset.missing = "1";
     img.classList.add("img-missing");
     img.src = TRANSPARENT_PIXEL;
   }
 
-  $$("img").forEach((img) => {
+  $$<HTMLImageElement>("img").forEach((img) => {
     if (img.closest(".lightbox")) return;
     // Large photos decode as their stop opens; keep that off the animation frames.
     img.decoding = "async";
@@ -230,7 +232,7 @@ function copyEmail() {
 
   /* ---------- Photo mosaics: "+N" on the last visible tile ---------- */
   $$(".mosaic[data-max]").forEach((mosaic) => {
-    const max = parseInt(mosaic.dataset.max, 10);
+    const max = parseInt(mosaic.dataset.max!, 10);
     const images = $$("img", mosaic);
     if (images.length <= max) return;
     images.slice(max).forEach((img) => (img.style.display = "none"));
@@ -238,7 +240,7 @@ function copyEmail() {
     const wrapper = document.createElement("div");
     wrapper.className = "mosaic__more";
     wrapper.dataset.more = `+${images.length - max}`;
-    last.parentNode.insertBefore(wrapper, last);
+    last.parentNode!.insertBefore(wrapper, last);
     wrapper.appendChild(last);
   });
 
@@ -251,7 +253,7 @@ function copyEmail() {
   });
 
   /* ---------- Reveal as items enter the popup's view ---------- */
-  const revealItems = [];
+  const revealItems: Element[] = [];
   $$("[data-reveal]").forEach((group) => {
     Array.from(group.children).forEach((child) => {
       child.classList.add("reveal-item");
@@ -265,7 +267,7 @@ function copyEmail() {
         let k = 0;
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.style.setProperty("--i", Math.min(k++, 6));
+          (entry.target as HTMLElement).style.setProperty("--i", Math.min(k++, 6));
           entry.target.classList.add("is-visible");
           itemIO.unobserve(entry.target);
         });
@@ -278,18 +280,19 @@ function copyEmail() {
   }
 
   /* ---------- Carousels with scale-bar progress ---------- */
-  const carousels = $$("[data-carousel]").map((el) => ({
-    track: $(".track", el),
-    bar: $(".scalebar", el),
-    win: $(".scalebar__win", el),
+  const carousels = $$("[data-carousel]").map((el): Carousel => ({
+    track: $(".track", el)!,
+    bar: $(".scalebar", el)!,
+    win: $(".scalebar__win", el)!,
     count: $(".car-count", el),
-    prev: $('.car-btn[data-dir="-1"]', el),
-    next: $('.car-btn[data-dir="1"]', el),
+    prev: $<HTMLButtonElement>('.car-btn[data-dir="-1"]', el),
+    next: $<HTMLButtonElement>('.car-btn[data-dir="1"]', el),
   }));
 
-  const visibleCards = (track) => Array.from(track.children).filter((c) => !c.hidden);
+  const visibleCards = (track: HTMLElement) =>
+    Array.from(track.children as HTMLCollectionOf<HTMLElement>).filter((c) => !c.hidden);
 
-  function buildSegments(c) {
+  function buildSegments(c: Carousel) {
     $$(".scalebar__seg", c.bar).forEach((s) => s.remove());
     const n = visibleCards(c.track).length;
     for (let i = 0; i < n; i++) {
@@ -299,7 +302,7 @@ function copyEmail() {
     }
   }
 
-  function updateCarousel(c) {
+  function updateCarousel(c: Carousel) {
     const t = c.track;
     const cs = getComputedStyle(t);
     const padL = parseFloat(cs.paddingLeft) || 0;
@@ -357,14 +360,14 @@ function copyEmail() {
   /* ---------- Experience / Education tabs ---------- */
   $$(".seg").forEach((list) => {
     const tabs = $$('[role="tab"]', list);
-    const panels = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")));
+    const panels = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")!)!);
 
     tabs.forEach((tab, i) => {
       const n = $(".seg__n", tab);
       if (n) n.textContent = `[${pad2($$(".entry", panels[i]).length)}]`;
     });
 
-    function selectTab(i, fromUser) {
+    function selectTab(i: number, fromUser: boolean) {
       tabs.forEach((tab, j) => {
         const on = j === i;
         tab.setAttribute("aria-selected", String(on));
@@ -384,7 +387,7 @@ function copyEmail() {
 
     // Arrow keys move between the tabs here instead of between stops
     list.addEventListener("keydown", (e) => {
-      const i = tabs.indexOf(document.activeElement);
+      const i = tabs.indexOf(document.activeElement as HTMLElement);
       if (i < 0) return;
       let k = -1;
       if (e.key === "ArrowRight") k = (i + 1) % tabs.length;
@@ -400,7 +403,7 @@ function copyEmail() {
 
   /* ---------- Licenses filter tabs ---------- */
   const tabButtons = $$("#licenses .tab-btn");
-  const licenseSlider = $("#slider-licenses");
+  const licenseSlider = $("#slider-licenses")!;
   const licenseCarousel = carousels.find((c) => c.track === licenseSlider);
 
   tabButtons.forEach((button) => {
@@ -411,7 +414,7 @@ function copyEmail() {
         btn.classList.toggle("is-active", on);
         btn.setAttribute("aria-selected", String(on));
       });
-      Array.from(licenseSlider.children).forEach((card) => {
+      Array.from(licenseSlider.children as HTMLCollectionOf<HTMLElement>).forEach((card) => {
         card.hidden = card.dataset.type !== filter;
       });
       licenseSlider.scrollLeft = 0;
@@ -423,15 +426,15 @@ function copyEmail() {
   });
 
   /* ---------- Detection reticle (hover on cards) ---------- */
-  const reticle = $("#reticle");
-  const reticleTag = $(".reticle__tag", reticle);
-  const confCache = new WeakMap();
-  let target = null;
+  const reticle = $("#reticle")!;
+  const reticleTag = $(".reticle__tag", reticle)!;
+  const confCache = new WeakMap<Element, string>();
+  let target: HTMLElement | null = null;
   let lastX = -1;
   let lastY = -1;
   let scrollTimer = 0;
 
-  function confidence(el) {
+  function confidence(el: Element) {
     if (confCache.has(el)) return confCache.get(el);
     const value = (0.86 + (hashStr(el.textContent || "") % 14) / 100).toFixed(2);
     confCache.set(el, value);
@@ -440,7 +443,7 @@ function copyEmail() {
 
   // The full padded box around `el`, plus the window [l, t, r, b] its scrolling
   // ancestors (popup body, carousel track, drawer) actually show.
-  function detectionBox(el, p) {
+  function detectionBox(el: Element, p: number) {
     const r = el.getBoundingClientRect();
     const box = { x: r.left - p, y: r.top - p, w: r.width + 2 * p, h: r.height + 2 * p };
     const v = [0, 0, window.innerWidth, window.innerHeight];
@@ -469,7 +472,7 @@ function copyEmail() {
 
   // The box keeps the object's full size; whatever falls outside the visible
   // window is masked, as if the object ran past the edge of the frame.
-  function placeReticle(el, instant) {
+  function placeReticle(el: Element, instant: boolean) {
     const box = detectionBox(el, 6);
     if (!box) {
       reticle.classList.remove("is-on");
@@ -495,7 +498,7 @@ function copyEmail() {
     return true;
   }
 
-  function setTarget(el) {
+  function setTarget(el: HTMLElement | null) {
     if (el === target) return;
     const wasOn = !!target;
     target = el;
@@ -507,13 +510,13 @@ function copyEmail() {
     if (placeReticle(el, !wasOn || reduceMotion.matches)) reticle.classList.add("is-on");
   }
 
-  function detectAt(x, y) {
+  function detectAt(x: number, y: number) {
     if (root.classList.contains("modal-open") || root.classList.contains("menu-open")) {
       setTarget(null);
       return;
     }
     const el = document.elementFromPoint(x, y);
-    setTarget(el && el.closest ? el.closest("[data-detect]") : null);
+    setTarget(el && el.closest ? el.closest<HTMLElement>("[data-detect]") : null);
   }
 
   if (finePointer.matches) {
@@ -527,7 +530,10 @@ function copyEmail() {
           setTarget(null);
           return;
         }
-        const el = e.target && e.target.closest ? e.target.closest("[data-detect]") : null;
+        const el =
+          e.target && (e.target as Element).closest
+            ? (e.target as Element).closest<HTMLElement>("[data-detect]")
+            : null;
         setTarget(el);
       },
       { passive: true }
@@ -557,7 +563,7 @@ function copyEmail() {
   }
 
   /* ---------- Shared: Perlin noise + marching squares ---------- */
-  function makeNoise(seed) {
+  function makeNoise(seed: number): Noise {
     const perm = new Uint8Array(512);
     const base = Array.from({ length: 256 }, (_, i) => i);
     const rand = mulberry(seed);
@@ -567,9 +573,9 @@ function copyEmail() {
     }
     for (let i = 0; i < 512; i++) perm[i] = base[i & 255];
 
-    const fade = (t) => t * t * t * (t * (t * 6 - 15) + 10);
-    const lerp = (t, a, b) => a + t * (b - a);
-    const grad = (h, x, y) => {
+    const fade = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
+    const lerp = (t: number, a: number, b: number) => a + t * (b - a);
+    const grad = (h: number, x: number, y: number) => {
       switch (h & 7) {
         case 0: return x + y;
         case 1: return -x + y;
@@ -601,7 +607,7 @@ function copyEmail() {
     };
   }
 
-  function sampleField(noise, cols, rows, step, scale, ox = 0, oy = 0) {
+  function sampleField(noise: Noise, cols: number, rows: number, step: number, scale: number, ox = 0, oy = 0) {
     const field = new Float32Array(cols * rows);
     let min = Infinity;
     let max = -Infinity;
@@ -620,7 +626,14 @@ function copyEmail() {
   }
 
   // Calls seg(x1, y1, x2, y2) for each contour segment of `field` at level L.
-  function marchingSquares(field, cols, rows, step, L, seg) {
+  function marchingSquares(
+    field: Float32Array,
+    cols: number,
+    rows: number,
+    step: number,
+    L: number,
+    seg: (x1: number, y1: number, x2: number, y2: number) => void
+  ) {
     for (let j = 0; j < rows - 1; j++) {
       for (let i = 0; i < cols - 1; i++) {
         const a = field[j * cols + i];
@@ -680,7 +693,17 @@ function copyEmail() {
   }
 
   // Corner-bracket box + label, the same language as the CSS detections.
-  function drawDetection(ctx, x, y, w, h, label, color, onColor, tagBelow = false) {
+  function drawDetection(
+    ctx: CanvasRenderingContext2D,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    label: string,
+    color: string,
+    onColor: string,
+    tagBelow = false
+  ) {
     const l = Math.max(6, Math.min(14, Math.min(w, h) / 4));
     ctx.save();
     ctx.strokeStyle = color;
@@ -716,33 +739,33 @@ function copyEmail() {
     ctx.restore();
   }
 
-  const overlaps = (a, b) => a[0] < b[2] && a[2] > b[0] && a[1] < b[3] && a[3] > b[1];
+  const overlaps = (a: number[], b: number[]) => a[0] < b[2] && a[2] > b[0] && a[1] < b[3] && a[3] > b[1];
   const noise = makeNoise(121774);
 
   /* =========================================================
      Full-page map — OpenStreetMap data for Quezon City
      ========================================================= */
-  const mapview = $("#mapview");
-  const geoWrap = $("#geomap");
-  const geoBase = $("#geomap-base");
-  const geoHi = $("#geomap-hi");
-  const stopsLayer = $("#map-stops");
-  const cursorEl = $("#map-cursor");
-  const cursorTag = $(".cursor__tag", cursorEl);
-  const followBtn = $("#map-follow");
-  const coordsOut = $("#map-coords");
-  const scaleBar = $("#map-scale-bar");
-  const scaleLabel = $("#map-scale-label");
+  const mapview = $("#mapview")!;
+  const geoWrap = $("#geomap")!;
+  const geoBase = $<HTMLCanvasElement>("#geomap-base")!;
+  const geoHi = $<HTMLCanvasElement>("#geomap-hi")!;
+  const stopsLayer = $("#map-stops")!;
+  const cursorEl = $("#map-cursor")!;
+  const cursorTag = $(".cursor__tag", cursorEl)!;
+  const followBtn = $("#map-follow")!;
+  const coordsOut = $("#map-coords")!;
+  const scaleBar = $("#map-scale-bar")!;
+  const scaleLabel = $("#map-scale-label")!;
   const locatorEl = $(".locator", mapview);
-  const locatorSvg = $("#locator-map");
+  const locatorSvg = $<SVGSVGElement>("#locator-map");
   const mapbarEl = $(".mapbar", mapview);
-  const progressBar = $("#route-progress");
-  const progressText = $("#route-distance");
+  const progressBar = $("#route-progress")!;
+  const progressText = $("#route-distance")!;
 
   const M_LAT = 110574;
   const ROAD_KIND = ["trunk", "primary", "secondary", "tertiary", "street"];
   const AREA_KIND = ["water", "park", "campus"];
-  const ABBR = [
+  const ABBR: [RegExp, string][] = [
     [/\bAvenue\b/g, "Ave"],
     [/\bStreet\b/g, "St"],
     [/\bRoad\b/g, "Rd"],
@@ -750,39 +773,39 @@ function copyEmail() {
     [/\bExtension\b/g, "Ext"],
     [/\bHighway\b/g, "Hwy"],
   ];
-  const DETECT_TARGETS = [
+  const DETECT_TARGETS: DetectTarget[] = [
     { re: /^Elliptical Road$/, label: "landmark", source: "roads", conf: "0.98" },
     { re: /^University of the Philippines Diliman$/, label: "campus", source: "areas", conf: "0.96" },
     { re: /^Ateneo de Manila University$/, label: "campus", source: "areas", conf: "0.95" },
     { re: /^Ninoy Aquino Parks/, label: "park", source: "areas", conf: "0.94" },
   ];
-  const STOP_SUBS = { 0: "Quezon City, Philippines", 1: "T.I.P. Quezon City" };
+  const STOP_SUBS: Record<number, string> = { 0: "Quezon City, Philippines", 1: "T.I.P. Quezon City" };
   // Gap between a stop marker and its popup (desktop).
   const GAP = 84;
 
-  let geo = null;
-  let mapStyle = null;
+  let geo: Geo | null = null;
+  let mapStyle: MapStyle | null = null;
   const view = { w: window.innerWidth, h: window.innerHeight, k: 0, vx: 0, vy: 0, homeK: 0.18 };
   // ax/ay: where on screen the camera keeps the route cursor (eased toward the target anchor).
-  const cam = { follow: true, d: 0, ax: null, ay: null, zoomAnim: false };
-  const buffer = { canvas: document.createElement("canvas"), ctx: null, valid: false, lowres: false, k: 0, vx: 0, vy: 0, bw: 0, bh: 0 };
+  const cam: Camera = { follow: true, d: 0, ax: null, ay: null, zoomAnim: false };
+  const buffer: MapBuffer = { canvas: document.createElement("canvas"), ctx: null, valid: false, lowres: false, k: 0, vx: 0, vy: 0, bw: 0, bh: 0 };
   const popSize = { w: 0, h: 0 };
-  let baseCtx = null;
-  let hiCtx = null;
-  let stopEls = [];
-  let stopD = [];
-  let stopXY = [];
+  let baseCtx: CanvasRenderingContext2D | null = null;
+  let hiCtx: CanvasRenderingContext2D | null = null;
+  let stopEls: HTMLAnchorElement[] = [];
+  let stopD: number[] = [];
+  let stopXY: [number, number, number][] = [];
   let activeIdx = -1;
   let current = 0;
   let popupOpen = true;
   let traveling = false;
   let travelId = 0;
-  let probeHit = null;
+  let probeHit: ProbeHit | null = null;
   let hovering = false;
   let frameQueued = false;
   let popPos = "";
   let popFlipped = false;
-  const tileQueue = [];
+  const tileQueue: HTMLElement[] = [];
 
   function readMapStyle() {
     mapStyle = {
@@ -807,10 +830,10 @@ function copyEmail() {
     };
   }
 
-  function decodeGeo(raw) {
+  function decodeGeo(raw: RawGeo): Geo {
     const [lat0, lon0] = raw.origin;
     const mLon = 111320 * Math.cos((lat0 * Math.PI) / 180);
-    const line = (arr, from) => {
+    const line = (arr: number[], from: number) => {
       const n = (arr.length - from) / 2;
       const pts = new Float32Array(n * 2);
       let x = 0;
@@ -823,7 +846,7 @@ function copyEmail() {
       }
       return pts;
     };
-    const bbox = (p) => {
+    const bbox = (p: Float32Array): BBox => {
       let a = Infinity;
       let b = Infinity;
       let c = -Infinity;
@@ -838,7 +861,7 @@ function copyEmail() {
       }
       return [a, b, c, d];
     };
-    const nm = (i) => (i >= 0 ? raw.names[i] : "");
+    const nm = (i: number) => (i >= 0 ? raw.names[i] : "");
 
     const roads = raw.roads.map((r) => {
       const pts = line(r, 2);
@@ -853,7 +876,7 @@ function copyEmail() {
       return { name: nm(r[0]), pts, bb: bbox(pts) };
     });
 
-    const ext = [Infinity, Infinity, -Infinity, -Infinity];
+    const ext: BBox = [Infinity, Infinity, -Infinity, -Infinity];
     roads.forEach(({ bb }) => {
       ext[0] = Math.min(ext[0], bb[0]);
       ext[1] = Math.min(ext[1], bb[1]);
@@ -863,7 +886,7 @@ function copyEmail() {
 
     // Uniform grid of road segments for hover hit-testing.
     const CELL = 250;
-    const grid = new Map();
+    const grid = new Map<number, number[]>();
     roads.forEach((r, ri) => {
       const p = r.pts;
       for (let i = 0; i < p.length - 2; i += 2) {
@@ -882,7 +905,7 @@ function copyEmail() {
       }
     });
 
-    let route = null;
+    let route: Route | null = null;
     if (raw.route) {
       const pts = line(raw.route.pts, 0);
       const n = pts.length / 2;
@@ -896,13 +919,13 @@ function copyEmail() {
     return { lat0, lon0, mLon, roads, areas, rivers, ext, grid, CELL, ph: raw.ph, route };
   }
 
-  const toLatLon = (x, y) => [geo.lat0 + y / M_LAT, geo.lon0 + x / geo.mLon];
-  const fmtLat = (lat, n = 5) => `${Math.abs(lat).toFixed(n)}° ${lat >= 0 ? "N" : "S"}`;
-  const fmtLon = (lon, n = 5) => `${Math.abs(lon).toFixed(n)}° ${lon >= 0 ? "E" : "W"}`;
-  const fmtKm = (m) => `${(m / 1000).toFixed(1)} km`;
+  const toLatLon = (x: number, y: number) => [geo!.lat0 + y / M_LAT, geo!.lon0 + x / geo!.mLon];
+  const fmtLat = (lat: number, n = 5) => `${Math.abs(lat).toFixed(n)}° ${lat >= 0 ? "N" : "S"}`;
+  const fmtLon = (lon: number, n = 5) => `${Math.abs(lon).toFixed(n)}° ${lon >= 0 ? "E" : "W"}`;
+  const fmtKm = (m: number) => `${(m / 1000).toFixed(1)} km`;
 
-  function pointAt(d) {
-    const { pts, cum, total } = geo.route;
+  function pointAt(d: number): [number, number, number] {
+    const { pts, cum, total } = geo!.route!;
     const t = clamp(d, 0, total);
     let lo = 0;
     let hi = cum.length - 1;
@@ -917,30 +940,30 @@ function copyEmail() {
   }
 
   // Draws the base map for an arbitrary viewport (map buffer and project tiles).
-  function drawMap(c, v, opts = {}) {
-    const s = mapStyle;
+  function drawMap(c: CanvasRenderingContext2D, v: Viewport, opts: { refK?: number; fill?: string } = {}): Projection {
+    const s = mapStyle!;
     const k = v.k;
     const cx = v.w / 2;
     const cy = v.h / 2;
-    const X = (x) => (x - v.vx) * k + cx;
-    const Y = (y) => cy - (y - v.vy) * k;
+    const X = (x: number) => (x - v.vx) * k + cx;
+    const Y = (y: number) => cy - (y - v.vy) * k;
     const vb = [v.vx - cx / k, v.vy - cy / k, v.vx + cx / k, v.vy + cy / k];
-    const inView = (bb) => bb[2] >= vb[0] && bb[0] <= vb[2] && bb[3] >= vb[1] && bb[1] <= vb[3];
+    const inView = (bb: BBox) => bb[2] >= vb[0] && bb[0] <= vb[2] && bb[3] >= vb[1] && bb[1] <= vb[3];
     const zoomF = Math.sqrt(clamp(k / (opts.refK || view.homeK), 0.7, 2.4));
 
-    const tracePath = (p, close) => {
+    const tracePath = (p: Float32Array, close: boolean) => {
       c.moveTo(X(p[0]), Y(p[1]));
       for (let i = 2; i < p.length; i += 2) c.lineTo(X(p[i]), Y(p[i + 1]));
       if (close) c.closePath();
     };
 
     [
-      [2, s.campus],
-      [1, s.park],
-      [0, s.water],
+      [2, s.campus] as const,
+      [1, s.park] as const,
+      [0, s.water] as const,
     ].forEach(([kind, fill]) => {
       c.beginPath();
-      geo.areas.forEach((a) => {
+      geo!.areas.forEach((a) => {
         if (a.k === kind && inView(a.bb)) tracePath(a.pts, true);
       });
       c.fillStyle = fill;
@@ -952,7 +975,7 @@ function copyEmail() {
 
     if (k >= 0.09) {
       c.beginPath();
-      geo.roads.forEach((r) => {
+      geo!.roads.forEach((r) => {
         if (r.c === 4 && inView(r.bb)) tracePath(r.pts, false);
       });
       c.strokeStyle = s.street;
@@ -961,7 +984,7 @@ function copyEmail() {
     }
 
     c.beginPath();
-    geo.rivers.forEach((r) => {
+    geo!.rivers.forEach((r) => {
       if (inView(r.bb)) tracePath(r.pts, false);
     });
     c.strokeStyle = s.river;
@@ -971,7 +994,7 @@ function copyEmail() {
     const widths = [0, 1.4, 1.05, 0.7];
     for (let cls = 3; cls >= 1; cls--) {
       c.beginPath();
-      geo.roads.forEach((r) => {
+      geo!.roads.forEach((r) => {
         if (r.c === cls && inView(r.bb)) tracePath(r.pts, false);
       });
       c.strokeStyle = cls <= 1 ? s.major : s.minor;
@@ -980,7 +1003,7 @@ function copyEmail() {
     }
     // Trunk roads drawn cased (double line), like a printed road map.
     c.beginPath();
-    geo.roads.forEach((r) => {
+    geo!.roads.forEach((r) => {
       if (r.c === 0 && inView(r.bb)) tracePath(r.pts, false);
     });
     c.strokeStyle = s.casing;
@@ -993,17 +1016,17 @@ function copyEmail() {
     return { X, Y, vb, inView };
   }
 
-  function roadLabel(name) {
+  function roadLabel(name: string) {
     let n = name;
     ABBR.forEach(([re, rep]) => (n = n.replace(re, rep)));
     return n.toUpperCase();
   }
 
-  function drawLabels(c, proj, w, h) {
-    const s = mapStyle;
+  function drawLabels(c: CanvasRenderingContext2D, proj: Projection, w: number, h: number) {
+    const s = mapStyle!;
     const { X, Y, inView } = proj;
-    const best = new Map();
-    geo.roads.forEach((r) => {
+    const best = new Map<string, LabelRun>();
+    geo!.roads.forEach((r) => {
       if (r.c > 2 || !r.name || !inView(r.bb)) return;
       const p = r.pts;
       for (let i = 0; i < p.length - 2; i += 2) {
@@ -1020,7 +1043,7 @@ function copyEmail() {
     c.font = `500 10px ${MONO_FONT}`;
     c.textAlign = "center";
     c.textBaseline = "middle";
-    const boxes = [];
+    const boxes: number[][] = [];
     const list = Array.from(best.entries()).sort((a, b) => a[1].c - b[1].c || b[1].len - a[1].len);
     for (const [name, sgm] of list) {
       if (boxes.length >= 36) break;
@@ -1050,11 +1073,11 @@ function copyEmail() {
     }
   }
 
-  function sizeCanvas(cv, w, h, maxDpr = 2) {
+  function sizeCanvas(cv: HTMLCanvasElement, w: number, h: number, maxDpr = 2) {
     const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
     cv.width = Math.round(w * dpr);
     cv.height = Math.round(h * dpr);
-    const c = cv.getContext("2d");
+    const c = cv.getContext("2d")!;
     c.setTransform(dpr, 0, 0, dpr, 0, 0);
     return c;
   }
@@ -1101,21 +1124,21 @@ function copyEmail() {
       p = bufferPlacement();
     }
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const rx = Math.round(p.x * dpr) / dpr;
-    const ry = Math.round(p.y * dpr) / dpr;
-    baseCtx.clearRect(0, 0, view.w, view.h);
-    baseCtx.drawImage(buffer.canvas, rx, ry, p.dw, p.dh);
+    const rx = Math.round(p!.x * dpr) / dpr;
+    const ry = Math.round(p!.y * dpr) / dpr;
+    baseCtx!.clearRect(0, 0, view.w, view.h);
+    baseCtx!.drawImage(buffer.canvas, rx, ry, p!.dw, p!.dh);
   }
 
-  const X = (x) => (x - view.vx) * view.k + view.w / 2;
-  const Y = (y) => view.h / 2 - (y - view.vy) * view.k;
-  const screenToMeters = (sx, sy) => [view.vx + (sx - view.w / 2) / view.k, view.vy - (sy - view.h / 2) / view.k];
+  const X = (x: number) => (x - view.vx) * view.k + view.w / 2;
+  const Y = (y: number) => view.h / 2 - (y - view.vy) * view.k;
+  const screenToMeters = (sx: number, sy: number) => [view.vx + (sx - view.w / 2) / view.k, view.vy - (sy - view.h / 2) / view.k];
 
-  function drawRoute(c, d) {
-    const { pts } = geo.route;
+  function drawRoute(c: CanvasRenderingContext2D, d: number) {
+    const { pts } = geo!.route!;
     const [cx, cy, idx] = pointAt(d);
-    const s = mapStyle;
-    const trace = (from, to, startPt, endPt) => {
+    const s = mapStyle!;
+    const trace = (from: number, to: number, startPt: number[] | null, endPt?: number[]) => {
       c.beginPath();
       if (startPt) c.moveTo(X(startPt[0]), Y(startPt[1]));
       else c.moveTo(X(pts[2 * from]), Y(pts[2 * from + 1]));
@@ -1147,10 +1170,10 @@ function copyEmail() {
   }
 
   /* ----- Floating UI over the map (cached; invalidated when it changes) ----- */
-  let uiCache = null;
+  let uiCache: { routeRight: number; list: number[][] } | null = null;
   function uiRects() {
     if (uiCache) return uiCache;
-    const rel = (el, pad = 8) => {
+    const rel = (el: Element | null, pad = 8) => {
       if (!el || !el.getClientRects().length) return null;
       const r = el.getBoundingClientRect();
       return [r.left - pad, r.top - pad, r.right + pad, r.bottom + pad];
@@ -1166,7 +1189,7 @@ function copyEmail() {
         rel(mapbarEl),
         rel(followBtn),
         rel(restoreBtn),
-      ].filter(Boolean),
+      ].filter(Boolean) as number[][],
     };
     return uiCache;
   }
@@ -1175,18 +1198,18 @@ function copyEmail() {
   };
 
   /* ----- Detections on named landmarks, kept clear of the UI ----- */
-  function drawLandmarks(c, obstacles) {
+  function drawLandmarks(c: CanvasRenderingContext2D, obstacles: number[][]) {
     if (!wideMQ.matches) return;
-    const placed = [];
+    const placed: number[][] = [];
     DETECT_TARGETS.forEach((t) => {
       if (placed.length >= 2) return;
       if (!t.bb) {
-        const pool = t.source === "roads" ? geo.roads : geo.areas;
+        const pool = t.source === "roads" ? geo!.roads : geo!.areas;
         const feats = pool.filter((f) => t.re.test(f.name));
         if (!feats.length) return;
         t.bb = feats.reduce(
           (acc, f) => [Math.min(acc[0], f.bb[0]), Math.min(acc[1], f.bb[1]), Math.max(acc[2], f.bb[2]), Math.max(acc[3], f.bb[3])],
-          [Infinity, Infinity, -Infinity, -Infinity]
+          [Infinity, Infinity, -Infinity, -Infinity] as BBox
         );
       }
       const x = X(t.bb[0]) - 6;
@@ -1198,23 +1221,23 @@ function copyEmail() {
       if (box[0] < 4 || box[1] < 4 || box[2] > view.w - 4 || box[3] > view.h - 4) return;
       if (obstacles.some((o) => overlaps(o, box)) || placed.some((p) => overlaps(p, box))) return;
       placed.push(box);
-      drawDetection(c, x, y, w, h, `${t.label} ${t.conf}`, mapStyle.signal, mapStyle.onSignal);
+      drawDetection(c, x, y, w, h, `${t.label} ${t.conf}`, mapStyle!.signal, mapStyle!.onSignal);
     });
   }
 
   /* ----- Hover "identify" tool ----- */
-  function hitTest(sx, sy) {
+  function hitTest(sx: number, sy: number): ProbeHit | null {
     const [mx, my] = screenToMeters(sx, sy);
     const r = 8 / view.k;
-    const C = geo.CELL;
-    let best = null;
+    const C = geo!.CELL;
+    let best: Road | null = null;
     let bestD = r;
     for (let gx = Math.floor((mx - r) / C); gx <= Math.floor((mx + r) / C); gx++) {
       for (let gy = Math.floor((my - r) / C); gy <= Math.floor((my + r) / C); gy++) {
-        const cell = geo.grid.get(gx * 100000 + gy);
+        const cell = geo!.grid.get(gx * 100000 + gy);
         if (!cell) continue;
         for (let q = 0; q < cell.length; q += 2) {
-          const road = geo.roads[cell[q]];
+          const road = geo!.roads[cell[q]];
           if (road.c === 4 && !road.name) continue;
           const p = road.pts;
           const i = cell[q + 1];
@@ -1234,8 +1257,8 @@ function copyEmail() {
     }
     if (best) return { type: "road", f: best };
 
-    let area = null;
-    geo.areas.forEach((a) => {
+    let area = null as { f: Area; size: number } | null;
+    geo!.areas.forEach((a) => {
       if (mx < a.bb[0] || mx > a.bb[2] || my < a.bb[1] || my > a.bb[3]) return;
       const p = a.pts;
       let inside = false;
@@ -1250,9 +1273,9 @@ function copyEmail() {
     return area ? { type: "area", f: area.f } : null;
   }
 
-  function drawProbe(c) {
+  function drawProbe(c: CanvasRenderingContext2D) {
     if (!probeHit) return;
-    const s = mapStyle;
+    const s = mapStyle!;
     const { f, type } = probeHit;
     const p = f.pts;
     c.beginPath();
@@ -1280,7 +1303,7 @@ function copyEmail() {
   /* ----- Stops ----- */
   function buildStops() {
     const n = sections.length;
-    const { total, wp } = geo.route;
+    const { total, wp } = geo!.route!;
     const firstLeg = wp[1] || total * 0.3;
     const end = total * 0.965;
     stopD = sections.map((_, i) => {
@@ -1321,13 +1344,13 @@ function copyEmail() {
     activeIdx = -1;
 
     $$("[data-stop-coords]").forEach((el) => {
-      const i = parseInt(el.dataset.stopCoords, 10);
+      const i = parseInt(el.dataset.stopCoords!, 10);
       const [lat, lon] = toLatLon(stopXY[i][0], stopXY[i][1]);
       el.textContent = `${fmtLat(lat, 4)} · ${fmtLon(lon, 4)}`;
     });
   }
 
-  function setActive(idx) {
+  function setActive(idx: number) {
     if (idx === activeIdx) return;
     activeIdx = idx;
     routeLinks.forEach((a, i) => {
@@ -1355,17 +1378,17 @@ function copyEmail() {
   }
 
   function buildLocator() {
-    if (!locatorSvg || !geo.ph) return;
+    if (!locatorSvg || !geo!.ph) return;
     const ns = "http://www.w3.org/2000/svg";
-    locatorSvg.setAttribute("viewBox", geo.ph.viewBox);
+    locatorSvg.setAttribute("viewBox", geo!.ph.viewBox);
     const land = document.createElementNS(ns, "path");
-    land.setAttribute("d", geo.ph.path);
+    land.setAttribute("d", geo!.ph.path);
     land.setAttribute("class", "locator__land");
     const ext = document.createElementNS(ns, "rect");
     ext.setAttribute("class", "locator__extent");
     const dot = document.createElementNS(ns, "circle");
-    dot.setAttribute("cx", ((geo.lon0 * geo.ph.kx - geo.ph.minx) * geo.ph.scale).toFixed(2));
-    dot.setAttribute("cy", ((-geo.lat0 - geo.ph.miny) * geo.ph.scale).toFixed(2));
+    dot.setAttribute("cx", ((geo!.lon0 * geo!.ph.kx - geo!.ph.minx) * geo!.ph.scale).toFixed(2));
+    dot.setAttribute("cy", ((-geo!.lat0 - geo!.ph.miny) * geo!.ph.scale).toFixed(2));
     dot.setAttribute("r", "1.6");
     dot.setAttribute("class", "locator__dot");
     locatorSvg.append(land, ext, dot);
@@ -1374,8 +1397,8 @@ function copyEmail() {
   function updateLocator() {
     const ext = locatorSvg && $(".locator__extent", locatorSvg);
     if (!ext) return;
-    const ph = geo.ph;
-    const proj = (lat, lon) => [(lon * ph.kx - ph.minx) * ph.scale, (-lat - ph.miny) * ph.scale];
+    const ph = geo!.ph!;
+    const proj = (lat: number, lon: number) => [(lon * ph.kx - ph.minx) * ph.scale, (-lat - ph.miny) * ph.scale];
     const [lat1, lon1] = toLatLon(view.vx - view.w / 2 / view.k, view.vy + view.h / 2 / view.k);
     const [lat2, lon2] = toLatLon(view.vx + view.w / 2 / view.k, view.vy - view.h / 2 / view.k);
     const [x1, y1] = proj(lat1, lon1);
@@ -1410,7 +1433,7 @@ function copyEmail() {
 
   // Desktop: the popup sits beside its marker (flipping sides and clamping to
   // the screen). Phones: it is a bottom sheet, positioned by CSS.
-  function layoutPopup(mx, my) {
+  function layoutPopup(mx: number, my: number): PopupBox {
     const ph = popSize.h || popup.offsetHeight;
     if (!wideMQ.matches) return { x: 8, y: view.h - 8 - ph, w: view.w - 16, h: ph, side: 0 };
     const pw = popupWidth();
@@ -1439,8 +1462,8 @@ function copyEmail() {
   }
 
   // Leader line from the marker to its popup, like a detection annotation.
-  function drawLeader(c, mx, my, p) {
-    const s = mapStyle;
+  function drawLeader(c: CanvasRenderingContext2D, mx: number, my: number, p: PopupBox) {
+    const s = mapStyle!;
     c.save();
     c.strokeStyle = s.signal;
     c.fillStyle = s.signal;
@@ -1497,8 +1520,8 @@ function copyEmail() {
         cam.ay = ty;
       } else {
         cam.ax += (tx - cam.ax) * 0.2;
-        cam.ay += (ty - cam.ay) * 0.2;
-        if (Math.abs(tx - cam.ax) < 0.5 && Math.abs(ty - cam.ay) < 0.5) {
+        cam.ay! += (ty - cam.ay!) * 0.2;
+        if (Math.abs(tx - cam.ax) < 0.5 && Math.abs(ty - cam.ay!) < 0.5) {
           cam.ax = tx;
           cam.ay = ty;
         } else {
@@ -1506,12 +1529,12 @@ function copyEmail() {
         }
       }
       view.vx = cx - (cam.ax - view.w / 2) / view.k;
-      view.vy = cy + (cam.ay - view.h / 2) / view.k;
+      view.vy = cy + (cam.ay! - view.h / 2) / view.k;
     }
 
     compositeBase();
-    hiCtx.clearRect(0, 0, view.w, view.h);
-    drawRoute(hiCtx, cam.d);
+    hiCtx!.clearRect(0, 0, view.w, view.h);
+    drawRoute(hiCtx!, cam.d);
     const cxs = X(cx);
     const cys = Y(cy);
 
@@ -1530,11 +1553,11 @@ function copyEmail() {
       const mx = X(stopXY[current][0]);
       const my = Y(stopXY[current][1]);
       const p = layoutPopup(mx, my);
-      drawLeader(hiCtx, mx, my, p);
+      drawLeader(hiCtx!, mx, my, p);
       obstacles.push([p.x - 16, p.y - 16, p.x + p.w + 16, p.y + p.h + 16]);
     }
-    drawLandmarks(hiCtx, obstacles);
-    drawProbe(hiCtx);
+    drawLandmarks(hiCtx!, obstacles);
+    drawProbe(hiCtx!);
 
     if (!hovering) {
       const [lat, lon] = toLatLon(cx, cy);
@@ -1575,7 +1598,7 @@ function copyEmail() {
     frame();
   }
 
-  function setFollow(on) {
+  function setFollow(on: boolean) {
     if (cam.follow === on) return;
     cam.follow = on;
     followBtn.hidden = on;
@@ -1608,7 +1631,7 @@ function copyEmail() {
 
   // While a popup is open, zoom about its marker so the popup stays put;
   // otherwise zoom about the pointer.
-  function zoomAround(k1, sx, sy) {
+  function zoomAround(k1: number, sx: number, sy: number) {
     if (popupShown() && stopXY.length) {
       if (cam.follow) {
         view.k = k1;
@@ -1628,11 +1651,11 @@ function copyEmail() {
     queueFrame();
   }
 
-  function animateTo(k1, focus) {
+  function animateTo(k1: number, focus?: number[]) {
     const k0 = view.k;
     const [sx, sy] = focus || [view.w / 2, view.h / 2];
     const [fx, fy] = screenToMeters(sx, sy);
-    const apply = (k) => {
+    const apply = (k: number) => {
       view.k = k;
       if (!cam.follow) {
         view.vx = fx - (sx - view.w / 2) / k;
@@ -1646,7 +1669,7 @@ function copyEmail() {
     }
     cam.zoomAnim = true;
     const t0 = performance.now();
-    const step = (now) => {
+    const step = (now: number) => {
       const t = Math.min(1, (now - t0) / 280);
       const e = 1 - Math.pow(1 - t, 3);
       apply(k0 * Math.pow(k1 / k0, e));
@@ -1659,7 +1682,7 @@ function copyEmail() {
     requestAnimationFrame(step);
   }
 
-  const zoomBy = (f) => {
+  const zoomBy = (f: number) => {
     if (!geo) return;
     animateTo(clamp(view.k * f, minK(), maxK()));
   };
@@ -1670,12 +1693,12 @@ function copyEmail() {
   }
 
   function bindMapEvents() {
-    $("#map-zoom-in").addEventListener("click", () => zoomBy(1.6));
-    $("#map-zoom-out").addEventListener("click", () => zoomBy(1 / 1.6));
-    $("#map-reset").addEventListener("click", recenter);
+    $("#map-zoom-in")!.addEventListener("click", () => zoomBy(1.6));
+    $("#map-zoom-out")!.addEventListener("click", () => zoomBy(1 / 1.6));
+    $("#map-reset")!.addEventListener("click", recenter);
     followBtn.addEventListener("click", recenter);
 
-    const local = (e) => {
+    const local = (e: MouseEvent) => {
       const r = geoWrap.getBoundingClientRect();
       return [e.clientX - r.left, e.clientY - r.top];
     };
@@ -1696,11 +1719,11 @@ function copyEmail() {
     );
 
     // Pan with any pointer; pinch-zoom with two touches.
-    const pointers = new Map();
-    let drag = null;
-    let pinch = null;
+    const pointers = new Map<number, number[]>();
+    let drag: { x: number; y: number; vx: number; vy: number; moved: boolean } | null = null;
+    let pinch: { d0: number; k0: number; at: number[] } | null = null;
 
-    const startDrag = (x, y) => {
+    const startDrag = (x: number, y: number) => {
       drag = { x, y, vx: view.vx, vy: view.vy, moved: false };
     };
     const startPinch = () => {
@@ -1712,7 +1735,7 @@ function copyEmail() {
 
     geoWrap.addEventListener("pointerdown", (e) => {
       if (e.pointerType === "mouse" && e.button !== 0) return;
-      if (e.target.closest(".stop")) return;
+      if ((e.target as Element).closest(".stop")) return;
       pointers.set(e.pointerId, local(e));
       try {
         geoWrap.setPointerCapture(e.pointerId);
@@ -1754,7 +1777,7 @@ function copyEmail() {
         drag.moved = true;
         setFollow(false);
         geoWrap.classList.add("is-dragging");
-        const e2 = geo.ext;
+        const e2 = geo!.ext;
         view.vx = clamp(drag.vx - dx / view.k, e2[0], e2[2]);
         view.vy = clamp(drag.vy + dy / view.k, e2[1], e2[3]);
         probeHit = null;
@@ -1763,14 +1786,14 @@ function copyEmail() {
       }
 
       if (e.pointerType !== "mouse" || !finePointer.matches) return;
-      const hit = e.target.closest(".stop") ? null : hitTest(sx, sy);
+      const hit = (e.target as Element).closest(".stop") ? null : hitTest(sx, sy);
       const changed = (hit && hit.f) !== (probeHit && probeHit.f);
       probeHit = hit;
       geoWrap.classList.toggle("is-probing", !!hit);
       if (changed) queueFrame();
     });
 
-    const endPointer = (e) => {
+    const endPointer = (e: PointerEvent) => {
       pointers.delete(e.pointerId);
       if (pointers.size < 2) pinch = null;
       if (pointers.size === 1) {
@@ -1793,7 +1816,7 @@ function copyEmail() {
       queueFrame();
     });
     geoWrap.addEventListener("dblclick", (e) => {
-      if (e.target.closest(".stop")) return;
+      if ((e.target as Element).closest(".stop")) return;
       let [sx, sy] = local(e);
       const k1 = clamp(view.k * (e.shiftKey ? 0.5 : 2), minK(), maxK());
       if (popupShown() && stopXY.length) {
@@ -1810,7 +1833,7 @@ function copyEmail() {
   }
 
   /* ---------- Project thumbnails: generated map tiles ---------- */
-  function renderTile(el) {
+  function renderTile(el: HTMLElement) {
     const w = el.clientWidth;
     const h = el.clientHeight;
     if (!w || !h) return false;
@@ -1818,14 +1841,14 @@ function copyEmail() {
       if (!tileQueue.includes(el)) tileQueue.push(el);
       return true;
     }
-    let cv = $("canvas", el);
+    let cv = $<HTMLCanvasElement>("canvas", el);
     if (!cv) {
       cv = document.createElement("canvas");
       cv.setAttribute("aria-hidden", "true");
       el.appendChild(cv);
     }
     const c = sizeCanvas(cv, w, h);
-    const s = mapStyle;
+    const s = mapStyle!;
     const seed = hashStr(el.dataset.seed || "tile");
     const rand = mulberry(seed);
     const tag = el.dataset.tag || "feature";
@@ -1834,7 +1857,7 @@ function copyEmail() {
     c.fillRect(0, 0, w, h);
 
     if (el.dataset.tile === "streets") {
-      const majors = geo.roads.filter((r) => r.c <= 1 && r.pts.length >= 6);
+      const majors = geo!.roads.filter((r) => r.c <= 1 && r.pts.length >= 6);
       const pick = majors[Math.floor(rand() * majors.length)];
       const mid = Math.floor(pick.pts.length / 4) * 2;
       const tv = { w, h, k: 0.16, vx: pick.pts[mid], vy: pick.pts[mid + 1] };
@@ -1907,7 +1930,7 @@ function copyEmail() {
     const tileIO = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && renderTile(entry.target)) tileIO.unobserve(entry.target);
+          if (entry.isIntersecting && renderTile(entry.target as HTMLElement)) tileIO.unobserve(entry.target);
         });
       },
       { rootMargin: "200px 0px" }
@@ -1924,21 +1947,21 @@ function copyEmail() {
   /* =========================================================
      Stop navigation: travel along the route, then open the popup
      ========================================================= */
-  function indexFromId(id) {
+  function indexFromId(id: string): number | null {
     if (!id) return null;
-    let el = null;
+    let el: HTMLElement | null = null;
     try {
       el = document.getElementById(decodeURIComponent(id));
     } catch (err) {
       el = null;
     }
-    const sec = el && el.closest ? el.closest("main > section[id]") : null;
+    const sec = el && el.closest ? el.closest<HTMLElement>("main > section[id]") : null;
     return sec ? sections.indexOf(sec) : null;
   }
 
   const indexFromHash = () => indexFromId(location.hash.slice(1));
 
-  function showSection(i) {
+  function showSection(i: number) {
     if (target && popup.contains(target)) setTarget(null);
     sections.forEach((s, k) => {
       if (k !== i) s.classList.remove("is-current", "is-entered");
@@ -1955,7 +1978,7 @@ function copyEmail() {
     });
   }
 
-  function updatePopupMeta(i) {
+  function updatePopupMeta(i: number) {
     const n = sections.length;
     const hasRoute = !!(geo && geo.route && stopD.length);
     popupIdx.textContent = pad2(i);
@@ -1971,7 +1994,7 @@ function copyEmail() {
     nextBtn.setAttribute("aria-label", last ? `Back to the start: ${stopNames[0]}` : `Next stop: ${stopNames[i + 1]}`);
     prevBtn.setAttribute("aria-label", i > 0 ? `Previous stop: ${stopNames[i - 1]}` : "Previous stop");
     nextDist.textContent = hasRoute
-      ? `· ${fmtKm(last ? geo.route.total - stopD[i] : stopD[i + 1] - stopD[i])}`
+      ? `· ${fmtKm(last ? geo!.route!.total - stopD[i] : stopD[i + 1] - stopD[i])}`
       : "";
     restoreLabel.textContent = `Stop ${pad2(i)} · ${stopNames[i]}`;
   }
@@ -1992,7 +2015,7 @@ function copyEmail() {
     queueFrame();
   }
 
-  function setExpanded(on) {
+  function setExpanded(on: boolean) {
     popup.classList.toggle("is-expanded", on);
     handleBtn.setAttribute("aria-expanded", String(on));
   }
@@ -2004,13 +2027,13 @@ function copyEmail() {
     restoreBtn.focus({ preventScroll: true });
   }
 
-  function focusAfter(f) {
+  function focusAfter(f?: FocusTarget) {
     if (!f) return;
     const el = f === "body" || f.disabled ? popupBody : f;
     el.focus({ preventScroll: true });
   }
 
-  function arrive(i, opts) {
+  function arrive(i: number, opts: NavOpts) {
     traveling = false;
     current = i;
     setActive(i);
@@ -2020,11 +2043,11 @@ function copyEmail() {
     focusAfter(opts.focus);
   }
 
-  function travel(i, opts) {
+  function travel(i: number, opts: NavOpts) {
     const id = ++travelId;
     const from = cam.d;
     const loop = !!opts.loop;
-    const to = loop ? geo.route.total : stopD[i];
+    const to = loop ? geo!.route!.total : stopD[i];
     const dist = Math.abs(to - from);
     engageFollow();
     traveling = true;
@@ -2035,7 +2058,7 @@ function copyEmail() {
     const dur = clamp(650 + dist * 0.13, 650, 2300);
     const t0 = performance.now();
     cam.zoomAnim = true;
-    const step = (now) => {
+    const step = (now: number) => {
       if (id !== travelId) return;
       const t = Math.min(1, (now - t0) / dur);
       const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -2053,7 +2076,7 @@ function copyEmail() {
     requestAnimationFrame(step);
   }
 
-  function goTo(i, opts = {}) {
+  function goTo(i: number | null, opts: NavOpts = {}) {
     if (i === null || i < 0 || i >= sections.length) return;
     if (routecard.classList.contains("is-open")) setMenu(false);
     if (opts.push !== false) {
@@ -2080,12 +2103,12 @@ function copyEmail() {
     travel(i, opts);
   }
 
-  const goNext = (focus) => {
+  const goNext = (focus: FocusTarget) => {
     const last = sections.length - 1;
     if (activeIdx >= last) goTo(0, { loop: true, focus });
     else goTo(activeIdx + 1, { focus });
   };
-  const goPrev = (focus) => {
+  const goPrev = (focus: FocusTarget) => {
     if (activeIdx > 0) goTo(activeIdx - 1, { focus });
   };
 
@@ -2097,9 +2120,9 @@ function copyEmail() {
   // Every in-page link to a section (route card, stop markers, brand) travels there.
   document.addEventListener("click", (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    const a = (e.target as Element).closest && (e.target as Element).closest('a[href^="#"]');
     if (!a) return;
-    const i = indexFromId(a.getAttribute("href").slice(1));
+    const i = indexFromId(a.getAttribute("href")!.slice(1));
     if (i === null) return;
     e.preventDefault();
     goTo(i, { focus: "body" });
@@ -2110,7 +2133,7 @@ function copyEmail() {
     goTo(i === null ? 0 : i, { push: false });
   });
 
-  function setRouteCollapsed(collapsed) {
+  function setRouteCollapsed(collapsed: boolean) {
     routecard.classList.toggle("is-collapsed", collapsed);
     routeToggle.setAttribute("aria-expanded", String(!collapsed));
     routeToggle.setAttribute("aria-label", collapsed ? "Expand route" : "Collapse route");
@@ -2121,14 +2144,14 @@ function copyEmail() {
   routeToggle.addEventListener("click", () => setRouteCollapsed(!routecard.classList.contains("is-collapsed")));
 
   /* ----- Phone sheet: tap the handle or swipe the bar ----- */
-  let swipe = null;
+  let swipe: { y: number } | null = null;
   let swipedAt = 0;
   handleBtn.addEventListener("click", () => {
     if (performance.now() - swipedAt < 400) return;
     setExpanded(!popup.classList.contains("is-expanded"));
   });
   popupBar.addEventListener("pointerdown", (e) => {
-    if (wideMQ.matches || e.target.closest("#popup-min")) return;
+    if (wideMQ.matches || (e.target as Element).closest("#popup-min")) return;
     swipe = { y: e.clientY };
     try {
       popupBar.setPointerCapture(e.pointerId);
@@ -2176,7 +2199,7 @@ function copyEmail() {
     if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
     if (root.classList.contains("modal-open") || root.classList.contains("menu-open")) return;
     if (lightbox.classList.contains("is-open")) return;
-    const t = e.target;
+    const t = e.target as Element | null;
     if (t && t.closest && t.closest("input, textarea, select, [contenteditable], .track")) return;
     if (e.key === "ArrowRight") {
       e.preventDefault();
@@ -2232,7 +2255,7 @@ function copyEmail() {
 
   /* ---------- Theme ---------- */
   // Light unless the visitor has switched to dark (remembered in localStorage).
-  const themeBtn = $("#theme-btn");
+  const themeBtn = $("#theme-btn")!;
   const themeColor = $('meta[name="theme-color"]');
   const isDark = () => root.getAttribute("data-theme") === "dark";
 
