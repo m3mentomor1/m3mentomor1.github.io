@@ -2011,8 +2011,117 @@ img.img-missing {
   background: var(--signal);
 }
 
-.col-title--spaced {
+/* Experience / Education tabs */
+.seg {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid var(--ink);
+}
+
+.seg__tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 14px 13px;
+  font: 500 12px/1 var(--font-mono);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--ink-3);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.seg__tab + .seg__tab {
+  border-left: 1px solid var(--rule);
+}
+
+.seg__tab::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.seg__tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+
+.seg__tab:hover {
+  color: var(--ink);
+}
+
+.seg__tab:focus-visible {
+  outline-offset: -2px;
+}
+
+.seg__tab[aria-selected="true"] {
+  color: var(--ink);
+  background: var(--paper-2);
+}
+
+.seg__tab[aria-selected="true"]::before {
+  background: var(--signal);
+  border-color: var(--signal);
+}
+
+.seg__tab[aria-selected="true"]::after {
+  transform: none;
+}
+
+.seg__n {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+@container panel (max-width: 370px) {
+  .seg__tab {
+    padding-inline: 10px;
+  }
+
+  .seg__n {
+    display: none;
+  }
+}
+
+.seg-panel.is-in {
+  animation: seg-in 0.35s var(--ease) both;
+}
+
+@keyframes seg-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Without scripts both lists stay stacked under their own headings */
+html:not(.js) .seg {
+  display: none;
+}
+
+html:not(.js) .seg-panel + .seg-panel {
   margin-top: 40px;
+}
+
+.js .seg-panel > .col-title {
+  display: none;
 }
 
 .timeline {

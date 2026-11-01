@@ -354,8 +354,52 @@ function copyEmail() {
     );
   });
 
+  /* ---------- Experience / Education tabs ---------- */
+  $$(".seg").forEach((list) => {
+    const tabs = $$('[role="tab"]', list);
+    const panels = tabs.map((tab) => document.getElementById(tab.getAttribute("aria-controls")));
+
+    tabs.forEach((tab, i) => {
+      const n = $(".seg__n", tab);
+      if (n) n.textContent = `[${pad2($$(".entry", panels[i]).length)}]`;
+    });
+
+    function selectTab(i, fromUser) {
+      tabs.forEach((tab, j) => {
+        const on = j === i;
+        tab.setAttribute("aria-selected", String(on));
+        tab.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+      if (!fromUser) return;
+      const panel = panels[i];
+      panel.classList.remove("is-in");
+      void panel.offsetWidth;
+      panel.classList.add("is-in");
+      setTarget(null);
+    }
+
+    selectTab(Math.max(0, tabs.findIndex((t) => t.getAttribute("aria-selected") === "true")), false);
+    tabs.forEach((tab, i) => tab.addEventListener("click", () => selectTab(i, true)));
+
+    // Arrow keys move between the tabs here instead of between stops
+    list.addEventListener("keydown", (e) => {
+      const i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      let k = -1;
+      if (e.key === "ArrowRight") k = (i + 1) % tabs.length;
+      else if (e.key === "ArrowLeft") k = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") k = 0;
+      else if (e.key === "End") k = tabs.length - 1;
+      if (k < 0) return;
+      e.preventDefault();
+      selectTab(k, true);
+      tabs[k].focus();
+    });
+  });
+
   /* ---------- Licenses filter tabs ---------- */
-  const tabButtons = $$(".tab-btn");
+  const tabButtons = $$("#licenses .tab-btn");
   const licenseSlider = $("#slider-licenses");
   const licenseCarousel = carousels.find((c) => c.track === licenseSlider);
 

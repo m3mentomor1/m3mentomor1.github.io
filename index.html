@@ -318,157 +318,170 @@
             <h2 class="sec-head__title">Education <span class="sl">/</span> Experience</h2>
           </div>
 
-          <h3 class="col-title">Experience</h3>
-          <ol class="timeline" data-reveal>
-            <!-- Experience (current) -->
-            <li class="entry is-live" data-detect="experience">
-              <p class="entry__when">Oct 2026 – Present</p>
-              <div class="entry__body">
-                <p class="entry__role">Senior ICT Assistant - Backend Developer</p>
-                <p class="entry__org">UP Resilience Institute</p>
-                <div class="entry__meta">
-                  <span class="chip">Contract</span>
+          <div class="seg" role="tablist" aria-label="Education / Experience">
+            <button type="button" role="tab" id="tab-experience" class="seg__tab" aria-controls="panel-experience" aria-selected="true">
+              Experience<span class="seg__n" aria-hidden="true"></span>
+            </button>
+            <button type="button" role="tab" id="tab-education" class="seg__tab" aria-controls="panel-education" aria-selected="false" tabindex="-1">
+              Education<span class="seg__n" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="seg-panel" role="tabpanel" id="panel-experience" aria-labelledby="tab-experience">
+            <h3 class="col-title">Experience</h3>
+            <ol class="timeline" data-reveal>
+              <!-- Experience (current) -->
+              <li class="entry is-live" data-detect="experience">
+                <p class="entry__when">Oct 2026 – Present</p>
+                <div class="entry__body">
+                  <p class="entry__role">Senior ICT Assistant - Backend Developer</p>
+                  <p class="entry__org">UP Resilience Institute</p>
+                  <div class="entry__meta">
+                    <span class="chip">Contract</span>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
 
-            <!-- Experience 1 -->
-            <li class="entry" data-detect="experience">
-              <p class="entry__when">Dec 2025 – July 2026</p>
-              <div class="entry__body">
-                <p class="entry__role">Software Development Engineer in Test</p>
-                <p class="entry__org">White Cloak Technologies, Inc.</p>
-                <div class="entry__meta">
-                  <span class="chip">Full-time</span>
+              <!-- Experience 1 -->
+              <li class="entry" data-detect="experience">
+                <p class="entry__when">Dec 2025 – July 2026</p>
+                <div class="entry__body">
+                  <p class="entry__role">Software Development Engineer in Test</p>
+                  <p class="entry__org">White Cloak Technologies, Inc.</p>
+                  <div class="entry__meta">
+                    <span class="chip">Full-time</span>
+                  </div>
+                  <button type="button" onclick="openModal('modal-sdet')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
                 </div>
-                <button type="button" onclick="openModal('modal-sdet')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
+              </li>
 
-            <!-- Experience 2 -->
-            <li class="entry" data-detect="experience">
-              <p class="entry__when">Oct 2025 – Dec 2025</p>
-              <div class="entry__body">
-                <p class="entry__role">Software Engineer Trainee</p>
-                <p class="entry__org">White Cloak Technologies, Inc.</p>
-                <div class="entry__meta">
-                  <span class="chip">Internship</span>
+              <!-- Experience 2 -->
+              <li class="entry" data-detect="experience">
+                <p class="entry__when">Oct 2025 – Dec 2025</p>
+                <div class="entry__body">
+                  <p class="entry__role">Software Engineer Trainee</p>
+                  <p class="entry__org">White Cloak Technologies, Inc.</p>
+                  <div class="entry__meta">
+                    <span class="chip">Internship</span>
+                  </div>
+                  <button type="button" onclick="openModal('modal-se-trainee')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
                 </div>
-                <button type="button" onclick="openModal('modal-se-trainee')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
+              </li>
 
-            <!-- Experience 3 -->
-            <li class="entry is-live" data-detect="experience">
-              <p class="entry__when">July 2025 – Present</p>
-              <div class="entry__body">
-                <p class="entry__role">CTO / CPO</p>
-                <p class="entry__org">SafeGIS</p>
-                <div class="entry__meta">
-                  <span class="chip">Part-time</span>
-                  <span class="chip chip--geo">GIS</span>
+              <!-- Experience 3 -->
+              <li class="entry is-live" data-detect="experience">
+                <p class="entry__when">July 2025 – Present</p>
+                <div class="entry__body">
+                  <p class="entry__role">CTO / CPO</p>
+                  <p class="entry__org">SafeGIS</p>
+                  <div class="entry__meta">
+                    <span class="chip">Part-time</span>
+                    <span class="chip chip--geo">GIS</span>
+                  </div>
+                  <button type="button" onclick="openModal('modal-safegis')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
                 </div>
-                <button type="button" onclick="openModal('modal-safegis')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
+              </li>
 
-            <!-- Experience 4 -->
-            <li class="entry" data-detect="experience">
-              <p class="entry__when">Mar 2025 – May 2025</p>
-              <div class="entry__body">
-                <p class="entry__role">UI Developer</p>
-                <p class="entry__org">Exist Software Labs, Inc.</p>
-                <div class="entry__meta">
-                  <span class="chip">Internship</span>
-                  <span class="entry__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin" /></svg>Ortigas, Pasig City</span>
+              <!-- Experience 4 -->
+              <li class="entry" data-detect="experience">
+                <p class="entry__when">Mar 2025 – May 2025</p>
+                <div class="entry__body">
+                  <p class="entry__role">UI Developer</p>
+                  <p class="entry__org">Exist Software Labs, Inc.</p>
+                  <div class="entry__meta">
+                    <span class="chip">Internship</span>
+                    <span class="entry__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin" /></svg>Ortigas, Pasig City</span>
+                  </div>
+                  <button type="button" onclick="openModal('modal-ui-dev')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
                 </div>
-                <button type="button" onclick="openModal('modal-ui-dev')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
+              </li>
 
-            <!-- Experience 5 -->
-            <li class="entry" data-detect="experience">
-              <p class="entry__when">July 2024 – July 2024</p>
-              <div class="entry__body">
-                <p class="entry__role">IT Director (Trainee)</p>
-                <p class="entry__org">SOLHAUS Limited (so/ul)</p>
-                <div class="entry__meta">
-                  <span class="chip">Part-time</span>
-                  <span class="entry__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin" /></svg>Remote</span>
+              <!-- Experience 5 -->
+              <li class="entry" data-detect="experience">
+                <p class="entry__when">July 2024 – July 2024</p>
+                <div class="entry__body">
+                  <p class="entry__role">IT Director (Trainee)</p>
+                  <p class="entry__org">SOLHAUS Limited (so/ul)</p>
+                  <div class="entry__meta">
+                    <span class="chip">Part-time</span>
+                    <span class="entry__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin" /></svg>Remote</span>
+                  </div>
+                  <button type="button" onclick="openModal('modal-it-dir')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
                 </div>
-                <button type="button" onclick="openModal('modal-it-dir')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
+              </li>
 
-            <!-- Experience 6 -->
-            <li class="entry" data-detect="experience">
-              <p class="entry__when">Mar 2024 – April 2024</p>
-              <div class="entry__body">
-                <p class="entry__role">Web Development Intern</p>
-                <p class="entry__org">ChatGenie.PH</p>
-                <div class="entry__meta">
-                  <span class="chip">Internship</span>
-                  <span class="entry__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin" /></svg>Remote</span>
+              <!-- Experience 6 -->
+              <li class="entry" data-detect="experience">
+                <p class="entry__when">Mar 2024 – April 2024</p>
+                <div class="entry__body">
+                  <p class="entry__role">Web Development Intern</p>
+                  <p class="entry__org">ChatGenie.PH</p>
+                  <div class="entry__meta">
+                    <span class="chip">Internship</span>
+                    <span class="entry__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin" /></svg>Remote</span>
+                  </div>
+                  <button type="button" onclick="openModal('modal-chatgenie')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
                 </div>
-                <button type="button" onclick="openModal('modal-chatgenie')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
+              </li>
 
-            <!-- Experience 7 -->
-            <li class="entry" data-detect="experience">
-              <p class="entry__when">Mar 2024 – Mar 2024</p>
-              <div class="entry__body">
-                <p class="entry__role">Customer Experience Agent</p>
-                <p class="entry__org">Alorica Philippines, Inc.</p>
-                <div class="entry__meta">
-                  <span class="chip">Part-time</span>
-                  <span class="entry__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin" /></svg>Sta. Mesa, Quezon City</span>
+              <!-- Experience 7 -->
+              <li class="entry" data-detect="experience">
+                <p class="entry__when">Mar 2024 – Mar 2024</p>
+                <div class="entry__body">
+                  <p class="entry__role">Customer Experience Agent</p>
+                  <p class="entry__org">Alorica Philippines, Inc.</p>
+                  <div class="entry__meta">
+                    <span class="chip">Part-time</span>
+                    <span class="entry__loc"><svg class="ico" aria-hidden="true"><use href="#i-pin" /></svg>Sta. Mesa, Quezon City</span>
+                  </div>
+                  <button type="button" onclick="openModal('modal-alorica')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
                 </div>
-                <button type="button" onclick="openModal('modal-alorica')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
-          </ol>
+              </li>
+            </ol>
+          </div>
 
-          <h3 class="col-title col-title--spaced">Education</h3>
-          <ol class="timeline" data-reveal>
-            <li class="entry" data-detect="education">
-              <p class="entry__when">2021 – 2025</p>
-              <div class="entry__body">
-                <p class="entry__role">Bachelor of Science - BS, Computer Engineering</p>
-                <p class="entry__sub">Specializing in Intelligent Systems</p>
-                <p class="entry__org">Technological Institute of the Philippines - Quezon City</p>
-                <button type="button" onclick="openModal('modal-bs-cpe')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
+          <div class="seg-panel" role="tabpanel" id="panel-education" aria-labelledby="tab-education">
+            <h3 class="col-title">Education</h3>
+            <ol class="timeline" data-reveal>
+              <li class="entry" data-detect="education">
+                <p class="entry__when">2021 – 2025</p>
+                <div class="entry__body">
+                  <p class="entry__role">Bachelor of Science - BS, Computer Engineering</p>
+                  <p class="entry__sub">Specializing in Intelligent Systems</p>
+                  <p class="entry__org">Technological Institute of the Philippines - Quezon City</p>
+                  <button type="button" onclick="openModal('modal-bs-cpe')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
+                </div>
+              </li>
 
-            <li class="entry" data-detect="education">
-              <p class="entry__when">2019 – 2021</p>
-              <div class="entry__body">
-                <p class="entry__role">Information and Communication Technology - ICT, Strand</p>
-                <p class="entry__sub">Technical-Vocational Livelihood - TVL, Track</p>
-                <p class="entry__org">Colegio De San Jose Del Monte Inc.</p>
-                <button type="button" onclick="openModal('modal-ict')" class="more">
-                  Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
-                </button>
-              </div>
-            </li>
-          </ol>
+              <li class="entry" data-detect="education">
+                <p class="entry__when">2019 – 2021</p>
+                <div class="entry__body">
+                  <p class="entry__role">Information and Communication Technology - ICT, Strand</p>
+                  <p class="entry__sub">Technical-Vocational Livelihood - TVL, Track</p>
+                  <p class="entry__org">Colegio De San Jose Del Monte Inc.</p>
+                  <button type="button" onclick="openModal('modal-ict')" class="more">
+                    Learn more <svg class="ico" aria-hidden="true"><use href="#i-arrow-r" /></svg>
+                  </button>
+                </div>
+              </li>
+            </ol>
+          </div>
         </section>
 
         <!-- ============ STOP 02 · TECH STACK / TOOLS ============ -->
