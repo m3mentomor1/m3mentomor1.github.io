@@ -1,0 +1,49 @@
+    <!-- ============ MAP (full page · OpenStreetMap data of Quezon City) ============ -->
+    <div id="mapview" class="mapview">
+      <div id="geomap" class="geomap">
+        <canvas id="geomap-base" class="geomap__layer" aria-hidden="true"></canvas>
+        <canvas id="geomap-hi" class="geomap__layer" aria-hidden="true"></canvas>
+        <div id="map-stops" class="stops" aria-hidden="true"></div>
+        <div id="map-cursor" class="cursor" aria-hidden="true">
+          <span class="cursor__ring"></span>
+          <span class="cursor__tag"></span>
+        </div>
+      </div>
+
+      <figure class="locator" aria-hidden="true">
+        <svg id="locator-map" class="locator__map"></svg>
+        <figcaption class="locator__meta">
+          <span class="locator__label">Locator</span>
+          <span class="locator__place">Quezon City, Philippines</span>
+          <span class="locator__fig"><svg class="ico"><use href="#i-north" /></svg> N</span>
+        </figcaption>
+      </figure>
+
+      <div class="mapbar">
+        <div class="mapbar__tools" role="group" aria-label="Map controls">
+          <button type="button" class="mapbar__btn" id="map-zoom-out" aria-label="Zoom out">
+            <svg class="ico" aria-hidden="true"><use href="#i-minus" /></svg>
+          </button>
+          <button type="button" class="mapbar__btn" id="map-zoom-in" aria-label="Zoom in">
+            <svg class="ico" aria-hidden="true"><use href="#i-plus" /></svg>
+          </button>
+          <button type="button" class="mapbar__btn" id="map-reset" aria-label="Recenter on the current stop">
+            <svg class="ico" aria-hidden="true"><use href="#i-locate" /></svg>
+          </button>
+        </div>
+        <div class="mapbar__scale" aria-hidden="true">
+          <span id="map-scale-bar" class="mapbar__scale-bar"></span>
+          <span id="map-scale-label">1 km</span>
+        </div>
+        <div class="mapbar__coords" aria-hidden="true">
+          <svg class="ico"><use href="#i-cross" /></svg>
+          <span id="map-coords">14.65160° N · 121.04960° E</span>
+        </div>
+        <div class="mapbar__crs" aria-hidden="true">WGS 84 · EPSG:4326</div>
+        <div class="mapbar__hint" aria-hidden="true">Drag to pan · Scroll to zoom</div>
+        <div class="mapbar__attr">
+          <span class="mapbar__copy">© 2026 Shain Sahagun ·</span>
+          <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap</a>
+        </div>
+      </div>
+    </div>
