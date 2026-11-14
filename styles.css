@@ -13,21 +13,25 @@
   --ink: #11191c;
   --ink-2: #454f54;
   --ink-3: #5d686d;
-  --rule: rgba(17, 25, 28, 0.13);
-  --rule-strong: rgba(17, 25, 28, 0.3);
-  --signal: #009ca3;
-  --signal-ink: #006c73;
-  --on-signal: #f4fffe;
-  --signal-on-ink: #009ca3;
+  --rule: rgba(17, 25, 28, 0.09);
+  --rule-strong: rgba(17, 25, 28, 0.16);
+  --line: rgba(17, 25, 28, 0.12);
+  --fill: rgba(17, 25, 28, 0.055);
+  --fill-strong: rgba(17, 25, 28, 0.1);
+  --signal: #328086;
+  --signal-ink: #205f65;
+  --on-signal: #f3f8f8;
+  --invert-signal: #68b8bb;
+  --invert-on-signal: #071413;
   --blue: #2c5f93;
   --contour: rgba(44, 95, 147, 0.16);
   --contour-index: rgba(44, 95, 147, 0.32);
-  --hatch: rgba(17, 25, 28, 0.42);
+  --hatch: rgba(17, 25, 28, 0.28);
   --map-bg: #dee4e5;
-  --map-minor: rgba(17, 25, 28, 0.24);
-  --map-major: rgba(17, 25, 28, 0.56);
-  --map-street: rgba(17, 25, 28, 0.11);
-  --map-casing: rgba(17, 25, 28, 0.78);
+  --map-minor: rgba(17, 25, 28, 0.18);
+  --map-major: rgba(17, 25, 28, 0.4);
+  --map-street: rgba(17, 25, 28, 0.09);
+  --map-casing: rgba(17, 25, 28, 0.52);
   --map-park: rgba(84, 134, 92, 0.18);
   --map-water: rgba(44, 95, 147, 0.2);
   --map-campus: rgba(17, 25, 28, 0.05);
@@ -35,10 +39,11 @@
   --invert-bg: #11191c;
   --invert-fg: #e5eaeb;
   --invert-fg-2: #a2acae;
-  --invert-rule: rgba(229, 234, 235, 0.16);
+  --invert-rule: rgba(229, 234, 235, 0.1);
   --icon-filter: none;
   --shadow-lg: 0 1px 0 rgba(17, 25, 28, 0.04), 0 22px 44px -24px rgba(17, 25, 28, 0.38);
   --shadow-pop: 0 2px 0 rgba(17, 25, 28, 0.05), 0 40px 80px -36px rgba(17, 25, 28, 0.6);
+  --shadow-sm: 0 1px 2px rgba(17, 25, 28, 0.06), 0 8px 18px -12px rgba(17, 25, 28, 0.22);
 
   --font-serif: "Newsreader", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --font-sans: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -58,21 +63,23 @@
   --ink: #e2e8e9;
   --ink-2: #a7b2b4;
   --ink-3: #8a9699;
-  --rule: rgba(226, 232, 233, 0.11);
-  --rule-strong: rgba(226, 232, 233, 0.26);
-  --signal: #34cfd2;
-  --signal-ink: #6ee2e4;
-  --on-signal: #021413;
-  --signal-on-ink: #006c73;
+  --rule: rgba(226, 232, 233, 0.08);
+  --rule-strong: rgba(226, 232, 233, 0.14);
+  --line: rgba(226, 232, 233, 0.1);
+  --fill: rgba(226, 232, 233, 0.06);
+  --fill-strong: rgba(226, 232, 233, 0.11);
+  --signal: #68b8bb;
+  --signal-ink: #9ed0d1;
+  --on-signal: #071413;
   --blue: #84aee2;
   --contour: rgba(132, 174, 226, 0.11);
   --contour-index: rgba(132, 174, 226, 0.22);
-  --hatch: rgba(226, 232, 233, 0.34);
+  --hatch: rgba(226, 232, 233, 0.22);
   --map-bg: #101517;
-  --map-minor: rgba(226, 232, 233, 0.2);
-  --map-major: rgba(226, 232, 233, 0.48);
-  --map-street: rgba(226, 232, 233, 0.08);
-  --map-casing: rgba(226, 232, 233, 0.7);
+  --map-minor: rgba(226, 232, 233, 0.15);
+  --map-major: rgba(226, 232, 233, 0.34);
+  --map-street: rgba(226, 232, 233, 0.065);
+  --map-casing: rgba(226, 232, 233, 0.46);
   --map-park: rgba(118, 172, 124, 0.12);
   --map-water: rgba(132, 174, 226, 0.16);
   --map-campus: rgba(226, 232, 233, 0.04);
@@ -80,10 +87,11 @@
   --invert-bg: #1a2123;
   --invert-fg: #e2e8e9;
   --invert-fg-2: #a2acae;
-  --invert-rule: rgba(226, 232, 233, 0.14);
+  --invert-rule: rgba(226, 232, 233, 0.09);
   --icon-filter: invert(1);
   --shadow-lg: 0 1px 0 rgba(0, 0, 0, 0.3), 0 22px 44px -24px rgba(0, 0, 0, 0.8);
   --shadow-pop: 0 2px 0 rgba(0, 0, 0, 0.3), 0 40px 80px -36px rgba(0, 0, 0, 0.9);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 18px -12px rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
 
@@ -248,7 +256,7 @@ figure {
   height: 18px;
   border-radius: 50%;
   background: var(--paper-2);
-  border: 3px solid var(--ink);
+  border: 2px solid var(--ink-3);
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease);
 }
@@ -300,7 +308,7 @@ figure {
 }
 
 .stop.is-passed .stop__dot {
-  background: var(--ink);
+  background: var(--ink-3);
 }
 
 .stop.is-active .stop__dot {
@@ -513,7 +521,7 @@ figure {
   gap: 18px;
   height: 46px;
   padding-right: 16px;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
   background: var(--paper-2);
   background: color-mix(in srgb, var(--paper-2) 92%, transparent);
   -webkit-backdrop-filter: blur(8px);
@@ -558,7 +566,7 @@ figure {
   display: block;
   width: 80px;
   height: 7px;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--ink-3);
   border-top: 0;
   transition: width 0.3s var(--ease);
 }
@@ -631,7 +639,7 @@ figure {
   height: 44px;
   padding: 0 16px;
   background: var(--paper-2);
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   box-shadow: var(--shadow-lg);
   font: 500 21px/1 var(--font-serif);
   letter-spacing: -0.005em;
@@ -666,7 +674,7 @@ figure {
   display: grid;
   place-items: center;
   background: var(--paper-2);
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   box-shadow: var(--shadow-lg);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -722,7 +730,7 @@ figure {
   position: fixed;
   z-index: 40;
   background: var(--paper-2);
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   box-shadow: var(--shadow-lg);
 }
 
@@ -783,7 +791,8 @@ figure {
 
 .routecard__close {
   display: none;
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  background: var(--fill);
 }
 
 .routecard__close .ico {
@@ -808,9 +817,9 @@ figure {
   content: "";
   position: absolute;
   z-index: 1;
-  left: 21px;
-  width: 3px;
-  background: var(--ink);
+  left: 21.5px;
+  width: 2px;
+  background: var(--ink-3);
   pointer-events: none;
 }
 
@@ -856,7 +865,7 @@ figure {
   height: 17px;
   border-radius: 50%;
   background: var(--paper-2);
-  border: 3px solid var(--ink);
+  border: 2px solid var(--ink-3);
   transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s var(--ease);
 }
 
@@ -866,7 +875,7 @@ figure {
 }
 
 .routecard__list a.is-passed .routecard__dot {
-  background: var(--ink);
+  background: var(--ink-3);
 }
 
 .routecard__list a.is-active {
@@ -901,8 +910,8 @@ figure {
   position: relative;
   flex: 1;
   height: 6px;
-  border: 1px solid var(--ink);
-  background: repeating-linear-gradient(90deg, var(--ink) 0 12px, transparent 12px 24px);
+  border: 1px solid var(--line);
+  background: repeating-linear-gradient(90deg, var(--ink-3) 0 12px, transparent 12px 24px);
 }
 
 .routecard__bar span {
@@ -965,7 +974,7 @@ figure {
   height: 46px;
   padding: 0 6px 0 16px;
   background: var(--paper-2);
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   color: var(--ink);
 }
 
@@ -1026,7 +1035,7 @@ figure {
   max-height: calc(100vh - 144px);
   max-height: calc(100dvh - 144px);
   background: var(--paper);
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   box-shadow: var(--shadow-pop);
   container: panel / inline-size;
   transform: translate(300px, 72px);
@@ -1076,7 +1085,7 @@ figure {
   gap: 12px;
   height: 44px;
   padding: 0 4px 0 var(--pad);
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
   background: var(--paper-2);
   font: 500 11px/1 var(--font-mono);
   letter-spacing: 0.06em;
@@ -1124,7 +1133,8 @@ figure {
   margin-left: auto;
   display: grid;
   place-items: center;
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  background: var(--fill);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -1160,7 +1170,7 @@ figure {
   flex: 0 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
   background: var(--paper-2);
 }
 
@@ -1204,9 +1214,9 @@ figure {
 .popnav--next {
   grid-template-columns: minmax(0, 1fr) auto;
   text-align: right;
-  border-left: 1px solid var(--ink);
-  background: var(--ink);
-  color: var(--paper);
+  border-left: 1px solid var(--line);
+  background: color-mix(in srgb, var(--signal) 16%, var(--paper-2));
+  color: var(--ink);
 }
 
 .popnav--next > .ico {
@@ -1215,11 +1225,11 @@ figure {
 }
 
 .popnav--next .popnav__meta {
-  color: color-mix(in srgb, var(--paper) 70%, transparent);
+  color: var(--ink-2);
 }
 
 .popnav--next .popnav__meta span {
-  color: var(--signal-on-ink);
+  color: var(--signal-ink);
 }
 
 .popnav--prev:hover {
@@ -1271,7 +1281,7 @@ figure {
     padding: 0 10px 0 12px;
     background: var(--paper);
     background: color-mix(in srgb, var(--paper) 92%, transparent);
-    border-bottom: 1px solid var(--ink);
+    border-bottom: 1px solid var(--line);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
   }
@@ -1412,7 +1422,7 @@ figure {
     flex-direction: column;
     height: auto;
     background: var(--paper-2);
-    border: 1px solid var(--ink);
+    border: 1px solid var(--line);
   }
 
   .mapbar__btn {
@@ -1480,7 +1490,7 @@ figure {
   .routecard__head {
     height: 58px;
     padding: 0 10px 0 var(--pad);
-    border-bottom-color: var(--ink);
+    border-bottom-color: var(--line);
   }
 
   .routecard__toggle {
@@ -1554,7 +1564,7 @@ html.modal-open .reticle {
 
 .sheet + .sheet {
   margin-top: 40px;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
 }
 
 .js .sheet + .sheet {
@@ -1599,7 +1609,8 @@ html.modal-open .reticle {
   display: inline-flex;
   align-items: center;
   padding: 6px 8px 5px;
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  background: var(--fill);
   font: 500 11px/1 var(--font-mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1607,7 +1618,7 @@ html.modal-open .reticle {
 }
 
 .chip--geo {
-  border-color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 14%, transparent);
   color: var(--signal-ink);
 }
 
@@ -1655,9 +1666,9 @@ html.modal-open .reticle {
   justify-content: center;
   gap: 10px;
   padding: 13px 18px 12px;
-  background: var(--ink);
-  border: 1px solid var(--ink);
-  color: var(--paper);
+  background: color-mix(in srgb, var(--signal) 16%, var(--paper-2));
+  border: 1px solid transparent;
+  color: var(--ink);
   font: 500 12px/1 var(--font-mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1838,7 +1849,7 @@ img.img-missing {
   top: 0;
   height: 24%;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent, rgba(132, 174, 226, 0.16) 80%, rgba(52, 207, 210, 0.55) 99.4%, rgba(52, 207, 210, 0.9) 100%);
+  background: linear-gradient(to bottom, transparent, rgba(132, 174, 226, 0.16) 80%, rgba(104, 184, 187, 0.45) 99.4%, rgba(104, 184, 187, 0.8) 100%);
   transform: translateY(-110%);
   animation: scan-y 7s var(--ease-io) 1.4s infinite;
 }
@@ -1963,8 +1974,8 @@ img.img-missing {
 .scale {
   flex: 1 1 80px;
   height: 8px;
-  border: 1px solid var(--ink);
-  background: repeating-linear-gradient(90deg, var(--ink) 0 12.5%, transparent 12.5% 25%);
+  border: 1px solid var(--line);
+  background: repeating-linear-gradient(90deg, var(--ink-3) 0 12.5%, transparent 12.5% 25%);
 }
 
 .socials {
@@ -1979,7 +1990,7 @@ img.img-missing {
   display: grid;
   place-items: center;
   background: var(--paper-2);
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
   transition: transform 0.3s var(--ease), border-color 0.25s ease;
 }
 
@@ -2000,7 +2011,7 @@ img.img-missing {
   align-items: center;
   gap: 10px;
   padding-bottom: 12px;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
   font: 500 12px/1 var(--font-mono);
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -2017,7 +2028,7 @@ img.img-missing {
 .seg {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 
 .seg__tab {
@@ -2160,7 +2171,7 @@ html:not(.js) .seg-panel + .seg-panel {
   width: 9px;
   height: 9px;
   background: var(--paper);
-  border: 1px solid var(--ink);
+  border: 1px solid var(--ink-3);
   transition: background-color 0.25s ease, transform 0.3s var(--ease);
 }
 
@@ -2252,8 +2263,8 @@ html:not(.js) .seg-panel + .seg-panel {
 
 /* ---------- Stop 02 — Stack as a stratigraphic column ---------- */
 .strata {
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .stratum {
@@ -2431,14 +2442,14 @@ html:not(.js) .seg-panel + .seg-panel {
 .chips li {
   padding: 7px 10px 6px;
   background: var(--paper-2);
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
   font-size: 14px;
   line-height: 1.2;
-  transition: border-color 0.25s ease, transform 0.3s var(--ease);
+  transition: box-shadow 0.25s ease, transform 0.3s var(--ease);
 }
 
 .stratum:hover .chips li {
-  border-color: var(--ink);
+  box-shadow: var(--shadow-sm);
 }
 
 .chips li:hover {
@@ -2455,7 +2466,7 @@ html:not(.js) .seg-panel + .seg-panel {
 
 /* ---------- Stop 03 — Projects ---------- */
 .proj {
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
 }
 
 .proj-cat {
@@ -2463,7 +2474,7 @@ html:not(.js) .seg-panel + .seg-panel {
 }
 
 .proj-cat:first-child {
-  border-top-color: var(--ink);
+  border-top-color: var(--line);
 }
 
 .proj-cat > summary {
@@ -2525,7 +2536,8 @@ html:not(.js) .seg-panel + .seg-panel {
   position: relative;
   width: 36px;
   height: 36px;
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  background: var(--fill);
   transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
@@ -2547,13 +2559,13 @@ html:not(.js) .seg-panel + .seg-panel {
 }
 
 .proj-cat > summary:hover .proj-cat__toggle {
-  border-color: var(--ink);
+  background: var(--fill-strong);
 }
 
 .proj-cat[open] .proj-cat__toggle {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--paper);
+  background: var(--fill-strong);
+  border-color: transparent;
+  color: var(--ink);
 }
 
 .proj-cat[open] .proj-cat__toggle::after {
@@ -2588,7 +2600,8 @@ html:not(.js) .seg-panel + .seg-panel {
   display: flex;
   flex-direction: column;
   background: var(--paper-2);
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
   transition: transform 0.4s var(--ease), box-shadow 0.4s ease;
 }
 
@@ -2657,7 +2670,8 @@ html:not(.js) .seg-panel + .seg-panel {
 
 .tags li {
   padding: 5px 6px 4px;
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  background: var(--fill);
   font: 500 10px/1 var(--font-mono);
   letter-spacing: 0.03em;
   color: var(--ink-2);
@@ -2694,7 +2708,8 @@ html:not(.js) .seg-panel + .seg-panel {
 
 .tab-btn {
   padding: 8px 11px 7px;
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  background: var(--fill);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.25;
@@ -2705,13 +2720,13 @@ html:not(.js) .seg-panel + .seg-panel {
 
 .tab-btn:hover {
   color: var(--ink);
-  border-color: var(--ink);
+  background: var(--fill-strong);
 }
 
 .tab-btn.is-active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--paper);
+  background: color-mix(in srgb, var(--signal) 16%, transparent);
+  border-color: transparent;
+  color: var(--signal-ink);
 }
 
 .car-bar {
@@ -2741,7 +2756,7 @@ html:not(.js) .seg-panel + .seg-panel {
   display: grid;
   place-items: center;
   background: var(--paper-2);
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
 }
 
@@ -2788,7 +2803,7 @@ html:not(.js) .seg-panel + .seg-panel {
   display: flex;
   height: 7px;
   margin-top: 16px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
 }
 
 .scalebar__seg {
@@ -2796,7 +2811,7 @@ html:not(.js) .seg-panel + .seg-panel {
 }
 
 .scalebar__seg:nth-child(odd) {
-  background: var(--ink);
+  background: var(--ink-3);
 }
 
 .scalebar__win {
@@ -2815,7 +2830,8 @@ html:not(.js) .seg-panel + .seg-panel {
   display: flex;
   flex-direction: column;
   background: var(--paper-2);
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
 }
 
 .cert__media {
@@ -2870,7 +2886,8 @@ html:not(.js) .seg-panel + .seg-panel {
   display: flex;
   flex-direction: column;
   background: var(--paper-2);
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
   font-size: 0;
 }
 
@@ -2957,7 +2974,7 @@ html:not(.js) .seg-panel + .seg-panel {
     linear-gradient(var(--c), var(--c)) bottom right / var(--l) var(--t),
     linear-gradient(var(--c), var(--c)) bottom right / var(--t) var(--l);
   background-repeat: no-repeat;
-  outline: 1px solid rgba(52, 207, 210, 0.45);
+  outline: 1px solid rgba(104, 184, 187, 0.45);
   outline-offset: -1px;
 }
 
@@ -3029,11 +3046,11 @@ html:not(.js) .seg-panel + .seg-panel {
   z-index: 1;
   font: 500 13px/1 var(--font-mono);
   letter-spacing: 0.06em;
-  color: #8ef3ef;
+  color: #b0dddd;
   text-shadow:
     0 0 1px rgba(0, 0, 0, 0.9),
     0 0 2px rgba(0, 0, 0, 0.6),
-    0 0 10px rgba(0, 190, 200, 0.85);
+    0 0 10px rgba(59, 150, 155, 0.6);
   pointer-events: none;
 }
 
@@ -3042,7 +3059,8 @@ html:not(.js) .seg-panel + .seg-panel {
   display: flex;
   flex-direction: column;
   background: var(--paper-2);
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
 }
 
 .lcard__info {
@@ -3105,6 +3123,9 @@ html:not(.js) .seg-panel + .seg-panel {
   background: var(--invert-bg);
   color: var(--invert-fg);
   border: 1px solid var(--invert-rule);
+  /* The panel is dark in both themes, so its accent uses the dark-surface pair. */
+  --signal: var(--invert-signal);
+  --on-signal: var(--invert-on-signal);
 }
 
 .contact__pin {
@@ -3434,7 +3455,8 @@ html:not(.js) .seg-panel + .seg-panel {
   height: 42px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--rule-strong);
+  border: 1px solid transparent;
+  background: var(--fill);
   font-size: 24px;
   line-height: 1;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -3461,7 +3483,7 @@ html:not(.js) .seg-panel + .seg-panel {
   list-style: none;
   margin: 24px 0 0;
   padding: 0;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--line);
 }
 
 .modal__list > li {
@@ -3648,7 +3670,7 @@ html:not(.js) .seg-panel + .seg-panel {
   max-width: calc(100% - 32px);
   padding: 14px 18px 13px;
   background: var(--signal);
-  color: #11191c;
+  color: var(--on-signal);
   box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.55);
   font: 500 12px/1.3 var(--font-mono);
   letter-spacing: 0.04em;
@@ -3663,7 +3685,7 @@ html:not(.js) .seg-panel + .seg-panel {
   flex: 0 0 auto;
   width: 8px;
   height: 8px;
-  background: #11191c;
+  background: currentColor;
 }
 
 .toast.is-on {

@@ -1153,7 +1153,7 @@ function copyEmail() {
     trace(idx + 1, last, [cx, cy]);
     c.setLineDash([7, 6]);
     c.strokeStyle = s.ink;
-    c.globalAlpha = 0.75;
+    c.globalAlpha = 0.5;
     c.lineWidth = 2.4;
     c.stroke();
     c.setLineDash([]);
